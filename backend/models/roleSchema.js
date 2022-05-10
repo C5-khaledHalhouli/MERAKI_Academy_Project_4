@@ -7,4 +7,4 @@ const roleSchema = new mongoose.Schema({
   permission: [{ type: String, required: true }],
 });
 // make model and export the schema
-module.exports = mongoose.model("role", roleSchema);
+module.exports = mongoose.model("Role", roleSchema);

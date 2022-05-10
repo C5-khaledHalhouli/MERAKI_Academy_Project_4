@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+ const bcrypt =require("bcrypt")
 // create userSchema , it will take objact of the data that expeted and the type of data
 
 const userSchema = new mongoose.Schema({
@@ -12,5 +12,14 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
+//create mongose midleware to hash password before save the data in db
+userSchema.pre("save",async function () {
+const salt=process.env.salt
+// create hashed the password function 
+const hashPassword=await bcrypt.hash(this.password,salt)
+this.password=hashPassword
+})
+
+
 // make model and export the schema
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("User", userSchema);

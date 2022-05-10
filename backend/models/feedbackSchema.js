@@ -9,4 +9,4 @@ const feedbackSchema = new mongoose.Schema({
 });
 
 // make model and export the schema
-module.exports = mongoose.model("role", roleSchema);
+module.exports = mongoose.model("Feedback", feedbackSchema);
