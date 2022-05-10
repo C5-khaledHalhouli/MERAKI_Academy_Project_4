@@ -2,9 +2,11 @@ const express = require("express");
 
 // instance the router
 const categoryRouter = express.Router();
+//crequires the functions
+const{createNewCategory}=require("../controllers/category")
 
 //  post request
-categoryRouter.post("/");
+categoryRouter.post("/",createNewCategory);
 //!----- check the path add categorID params
 categoryRouter.post("/service");
 categoryRouter.post("/service/:serviceID/feedback");
