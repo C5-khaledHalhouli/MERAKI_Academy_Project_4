@@ -51,4 +51,22 @@ const createNeWFeedback = (req, res) => {
       });
     });
 };
-module.exports = { createNeWFeedback };
+//create function to get all feedback
+// use find method to get the data from db
+// take serviceId by params
+// responce the data
+const getAllFeedback = (req, res) => {
+  const serviceID = req.params.serviceID;
+  serviceModel
+    .findOne({ _id: serviceID })
+    .populate("feedback")
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err.message });
+    });
+};
+module.exports = { createNeWFeedback, getAllFeedback };
