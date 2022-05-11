@@ -126,4 +126,16 @@ const updateOfService = (req, res) => {
       });
     });
 };
-module.exports = { createNeWService, getAllServices,updateOfService };
+// create function to delete service
+// get the serviceId by params
+// use findoneanddelete to delete service
+// responce the delete service
+const deleteService=(req,res)=>{
+    const serviceID=req.params.serviceID
+    serviceModel.findOneAndDelete({_id:serviceID}).then((result)=>{
+        res.status(200).json(result)
+    }).catch((err)=>{
+        res.status(500).json(err.message)
+    })
+}
+module.exports = { createNeWService, getAllServices,updateOfService,deleteService };
