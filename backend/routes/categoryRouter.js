@@ -4,7 +4,7 @@ const express = require("express");
 const categoryRouter = express.Router();
 //crequires the functions
 const{createNewCategory,getAllCategory,}=require("../controllers/category")
-const {createNeWService,getAllServices}=require("../controllers/service")
+const {createNeWService,getAllServices,updateOfService}=require("../controllers/service")
 const {createNeWFeedback,getAllFeedback}=require("../controllers/feedback")
 //  post request
 categoryRouter.post("/",createNewCategory);
@@ -15,7 +15,8 @@ categoryRouter.get("/",getAllCategory);
 categoryRouter.get("/service/:serviceID/feedback",getAllFeedback);
 categoryRouter.get("/:categoryID/service",getAllServices);
 //Put request
-categoryRouter.put("/category/service/:serviceId");
+categoryRouter.put("/service/:serviceID",updateOfService);
+//! when make admin
 categoryRouter.put("/:categoryId");
 //Delete request
 categoryRouter.delete("/category/service/:serviceId");

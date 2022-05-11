@@ -66,13 +66,64 @@ const createNeWService = (req, res) => {
 
 // create function to get all service of category
 //use find to get the services
-const getAllServices=(req,res)=>{
-const categoryID=req.params.categoryID
-categoryModel.findOne({_id:categoryID}).populate("services","-_id").then((result)=>{
-  
-    res.status(200).json(result.services)
-}).catch((err)=>{
-    res.status(404).json(result.services)
-})
-}
-module.exports = { createNeWService,getAllServices };
+const getAllServices = (req, res) => {
+  const categoryID = req.params.categoryID;
+  categoryModel
+    .findOne({ _id: categoryID })
+    .populate("services", "-_id")
+    .then((result) => {
+      res.status(200).json(result.services);
+    })
+    .catch((err) => {
+      res.status(404).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+// create function to update the date in service
+// use findoneandupdate to get the data from db and update it
+// get serviceId by params
+// get the data from the body
+const updateOfService = (req, res) => {
+  const serviceID = req.params.serviceID;
+  const {
+    title,
+    category,
+    description,
+    user,
+    cost,
+    img,
+    feedback,
+    country,
+    cities,
+  } = req.body;
+  serviceModel
+    .findOneAndUpdate(
+      { _id: serviceID },
+      {
+        title,
+        category,
+        description,
+        user,
+        cost,
+        img,
+        feedback,
+        country,
+        cities,
+      },
+      { returnDocument: "after" }
+    )
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+module.exports = { createNeWService, getAllServices,updateOfService };
