@@ -1,10 +1,10 @@
 const express= require("express")
-
+const{createNeWUser}=require("../controllers/user")
 // instance router
 
 const userRouter=express.Router()
 // post request
-userRouter.post("")
+userRouter.post("",createNeWUser)
 //put request
 userRouter.put("/:userID")
 

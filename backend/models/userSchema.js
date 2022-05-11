@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: true },
   country: { type: String, required: true },
   city: { type: String, required: true },
-  birthday: { type: Date, required: true },
+  birthday: { type: String, required: true },
   role: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
 userSchema.pre("save",async function () {
 const salt=process.env.salt
 // create hashed the password function 
-const hashPassword=await bcrypt.hash(this.password,salt)
+const hashPassword=await bcrypt.hash(this.password,+salt)
 this.password=hashPassword
 })
 

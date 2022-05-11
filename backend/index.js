@@ -20,11 +20,12 @@ app.use("/user", userRouter);
 app.use("/category", categoryRouter);
 app.use("/role", roleRouter);
 
+
 // declare PORT variabel to get the port from .env
 
 const PORT = process.env.PORT;
 
 // make the server listen to request
-app.listen(() => {
+app.listen(PORT,() => {
   console.log(`Server listening at http://localhost:${PORT}`);
 });

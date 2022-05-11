@@ -3,17 +3,17 @@ const express = require("express");
 // instance the router
 const categoryRouter = express.Router();
 //crequires the functions
-const{createNewCategory}=require("../controllers/category")
-
+const{createNewCategory,getAllCategory,}=require("../controllers/category")
+const {createNeWService,getAllServices}=require("../controllers/service")
+const {createNeWFeedback}=require("../controllers/feedback")
 //  post request
 categoryRouter.post("/",createNewCategory);
-//!----- check the path add categorID params
-categoryRouter.post("/service");
-categoryRouter.post("/service/:serviceID/feedback");
+categoryRouter.post("/service",createNeWService);
+categoryRouter.post("/service/:serviceID/feedback",createNeWFeedback);
 //get request
-categoryRouter.get("/");
+categoryRouter.get("/",getAllCategory);
 categoryRouter.get("/service/:serviceID/feedback");
-categoryRouter.get("/:categoryId/service");
+categoryRouter.get("/:categoryID/service",getAllServices);
 //Put request
 categoryRouter.put("/category/service/:serviceId");
 categoryRouter.put("/:categoryId");
