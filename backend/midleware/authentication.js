@@ -1,32 +1,25 @@
-const express =require("express")
-const jwt =require("jsonwebtoken")
+const express = require("express");
+const jwt = require("jsonwebtoken");
 //create function called authentication
 //the function will verify the token
 //take the token from header authorization
-const authentication=(req,res,next)=>{
-let token=req.headers.authorization
-console.log("token", token,token!==undefined);
-if(token!==undefined){
-token=token.split(" ")[1]
-console.log("tokeeeeeeeeeeen");
-    jwt.verify(token,process.env.Secret,(err,result)=>{
-        console.log("result",result)
-        console.log("err",err);;
-        next()
-    })
-}else{
+const authentication = (req, res, next) => {
+  if (req.headers.authorization === undefined) {
     res.status(403).json({
+      success: false,
+      message: "Forbidden",
+    });
+  }
+  const token = req.headers.authorization.split(" ")[1];
+
+  jwt.verify(token, process.env.Secret, (err, result) => {
+    if (err) {
+      res.status(403).json({
         success: false,
-message: "The token is invalid or expired"
-    })
-}
-res.status(403).json({
-    success: false,
-message: "Forbidden"
-})
-
-
-
-
-}
-module.exports=authentication
+        message: "The token is invalid or expired",
+      });
+    }
+    next();
+  });
+};
+module.exports = authentication;

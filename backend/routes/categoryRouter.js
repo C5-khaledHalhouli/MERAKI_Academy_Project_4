@@ -21,18 +21,18 @@ const {
 const authentication =require("../midleware/authentication")
 //  post request
 categoryRouter.post("/", authentication,createNewCategory);
-categoryRouter.post("/service", createNeWService);
-categoryRouter.post("/service/:serviceID/feedback", createNeWFeedback);
+categoryRouter.post("/service",authentication, createNeWService);
+categoryRouter.post("/service/:serviceID/feedback",authentication, createNeWFeedback);
 //get request
 categoryRouter.get("/", getAllCategory);
 categoryRouter.get("/service/:serviceID/feedback", getAllFeedback);
 categoryRouter.get("/:categoryID/service", getAllServices);
 //Put request
-categoryRouter.put("/service/:serviceID", updateOfService);
+categoryRouter.put("/service/:serviceID",authentication, updateOfService);
 //! when make admin
 categoryRouter.put("/:categoryId");
 //Delete request
-categoryRouter.delete("/service/:serviceID", deleteService);
+categoryRouter.delete("/service/:serviceID",authentication, deleteService);
 //! when make admin
 categoryRouter.delete("/:categoryID");
 categoryRouter.delete("/service/:serviceID/feedback");
