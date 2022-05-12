@@ -8,6 +8,7 @@ require("dotenv").config();
 const categoryRouter = require("./routes/categoryRouter");
 const userRouter = require("./routes/userRouter");
 const roleRouter = require("./routes/roleRouter");
+const loginRouter=require("./routes/login")
 // instance the expree in app variable
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/user", userRouter);
 app.use("/category", categoryRouter);
 app.use("/role", roleRouter);
+app.use("/login",loginRouter)
 
 
 // declare PORT variabel to get the port from .env

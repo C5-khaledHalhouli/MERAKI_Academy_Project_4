@@ -14,6 +14,8 @@ const userSchema = new mongoose.Schema({
 });
 //create mongose midleware to hash password before save the data in db
 userSchema.pre("save",async function () {
+    // make the email in lowerceas
+    this.email=this.email.toLowerCase()
 const salt=process.env.salt
 // create hashed the password function 
 const hashPassword=await bcrypt.hash(this.password,+salt)
