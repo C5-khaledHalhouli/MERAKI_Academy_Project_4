@@ -2,7 +2,7 @@ const express = require("express");
 
 // instance the router
 const categoryRouter = express.Router();
-//crequires the functions
+//requires the functions
 const {
   createNewCategory,
   getAllCategory,
@@ -17,8 +17,10 @@ const {
   createNeWFeedback,
   getAllFeedback,
 } = require("../controllers/feedback");
+
+const authentication =require("../midleware/authentication")
 //  post request
-categoryRouter.post("/", createNewCategory);
+categoryRouter.post("/", authentication,createNewCategory);
 categoryRouter.post("/service", createNeWService);
 categoryRouter.post("/service/:serviceID/feedback", createNeWFeedback);
 //get request

@@ -26,7 +26,8 @@ const login = (req, res) => {
                 
                 const token=jwt.sign(payload,process.env.Secret,{expiresIn:"2h"})
 
-              res.status(200).json(token);
+              res.status(200).json({sucess:"Login succesful",
+                  token:token});
             } else {
               res.status(401).json("password is not correct");
             }
