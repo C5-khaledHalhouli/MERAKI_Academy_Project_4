@@ -13,8 +13,8 @@ const loginRouter=require("./routes/login")
 // instance the expree in app variable
 
 const app = express();
-
 //middleware
+app.use(cors());
 app.use(express.json());
 
 //add path to routers
