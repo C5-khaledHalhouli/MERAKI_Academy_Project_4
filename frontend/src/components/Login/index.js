@@ -14,11 +14,12 @@ const [message,setMessage]=useState("")
 
 const loginClick=()=>{
   axios.post("http://localhost:5000/login",{email:email,password:password}).then((result)=>{
-    setMessage(result.data.success)
-    setToken
-    (localStorage.setItem("token",result.data.token))
+    setMessage(result.data.sucess)
+    localStorage.setItem("token",result.data.token)
+
   }).catch((err)=>{
-    setMessage(err)
+    console.log(err);
+    setMessage(err.response.data)
   })
 }
 
