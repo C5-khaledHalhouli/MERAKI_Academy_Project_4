@@ -20,7 +20,7 @@ const {
 
 const authentication =require("../midleware/authentication")
 //  post request
-categoryRouter.post("/", authentication,createNewCategory);
+categoryRouter.post("/",createNewCategory);
 categoryRouter.post("/service",authentication, createNeWService);
 categoryRouter.post("/service/:serviceID/feedback",authentication, createNeWFeedback);
 //get request
