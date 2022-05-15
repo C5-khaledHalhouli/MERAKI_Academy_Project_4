@@ -22,7 +22,7 @@ const login = (req, res) => {
 
           bcrypt.compare(password, result.password, (err, result1) => {
             if (result1) {
-                const payload={role:result.role,firstName:result.firstName,lastName:result.lastName,country:result.country,city:result.city,email:result.email}
+                const payload={role:result.role,firstName:result.firstName,lastName:result.lastName,country:result.country,city:result.city,email:result.email,_id:result._id}
                 
                 const token=jwt.sign(payload,process.env.Secret,{expiresIn:"2h"})
 

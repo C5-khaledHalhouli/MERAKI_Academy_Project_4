@@ -7,6 +7,7 @@ import { NavBar } from "./components/NavBar/index";
 import jwtDecode from "jwt-decode";
 import { MainPage } from "./components/MainPage/MainPage";
 import { Service } from "./components/Service/Service";
+import { createService } from "./components/CreateService/CreateService";
 // make variable of context
 export const tokenContext = createContext();
 function App() {
@@ -29,17 +30,17 @@ function App() {
   return (
     <div className="App">
       <h1>Hello world</h1>
-      <NavBar isLoggedIn={isLoggedIn}/>
-      
+      <NavBar isLoggedIn={isLoggedIn} />
+
       <tokenContext.Provider value={setToken}>
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<MainPage/>}/>
-          <Route path="/category/:categoryID/service" element={<Service/>}/>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/category/:categoryID/service" element={<Service />} />
         </Routes>
       </tokenContext.Provider>
-      <Service/>
+      <Service />
     </div>
   );
 }

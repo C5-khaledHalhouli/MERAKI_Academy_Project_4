@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
   role: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  services:{type:mongoose.Schema.Types.ObjectId, ref:"Services"}
 });
 //create mongose midleware to hash password before save the data in db
 userSchema.pre("save",async function () {
