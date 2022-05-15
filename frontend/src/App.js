@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar/index";
 import jwtDecode from "jwt-decode";
 import { MainPage } from "./components/MainPage/MainPage";
+import { Service } from "./components/Service/Service";
 // make variable of context
 export const tokenContext = createContext();
 function App() {
@@ -35,8 +36,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<MainPage/>}/>
+          <Route path="/category/:categoryID/service" element={<Service/>}/>
         </Routes>
       </tokenContext.Provider>
+      <Service/>
     </div>
   );
 }

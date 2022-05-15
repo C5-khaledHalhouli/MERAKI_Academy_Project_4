@@ -34,13 +34,13 @@ const getAllCategory = (req, res) => {
         success: true,
         data: result,
       })
-      .catch((err) => {
+      ;
+      }).catch((err) => {
         err.status(500).json({
           success: false,
           message: "Server Error",
           err: err.message,
         });
-      });
   });
 };
 module.exports = { createNewCategory, getAllCategory };
