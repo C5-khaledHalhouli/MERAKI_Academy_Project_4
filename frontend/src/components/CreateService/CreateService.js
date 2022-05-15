@@ -3,13 +3,15 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 
 // write function to createservice
-const createService = () => {
+const CreateService = () => {
   // write state for each category
   const [category, setCategory] = useState("");
   const [service, setService] = useState("");
   const [description, setDescription] = useState("");
   const [cost, setCost] = useState("");
   const [user, setUser] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
   useEffect(() => {
     axios.get("http://localhost:5000/category").then((result) => {
       // change the value of category to its id in db
@@ -23,8 +25,9 @@ const createService = () => {
   // create function when we click on Create Service
   const clickCreateService = () => {
     const token = localStorage.getItem("token");
-    setUser(jwtDecode(token._id));
-// send the req to backend with data and token
+    setUser(jwtDecode(token)._id);
+
+    // send the req to backend with data and token
     axios
       .post(
         "http://localhost:5000/category/service",
@@ -34,6 +37,8 @@ const createService = () => {
           description: description,
           user: user,
           cost: cost,
+          country: country,
+          city: city,
         },
         {
           headers: {
@@ -45,7 +50,7 @@ const createService = () => {
         console.log(result);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("err", err);
       });
   };
   return (
@@ -78,10 +83,25 @@ const createService = () => {
         <option>Other</option>
       </select>
       <p>Cost</p>
+
       <input
         placeholder="20$ per m2"
         onChange={(e) => {
           setCost(e.target.value);
+        }}
+      />
+      <p>contry</p>
+      <input
+        placeholder="Jordan"
+        onChange={(e) => {
+          setCountry(e.target.value);
+        }}
+      />
+      <p>City</p>
+      <input
+        placeholder="amman,irbed"
+        onChange={(e) => {
+          setCity(e.target.value);
         }}
       />
       <button onClick={clickCreateService}>Create Service</button>
@@ -89,4 +109,4 @@ const createService = () => {
   );
 };
 
-export { createService };
+export { CreateService };

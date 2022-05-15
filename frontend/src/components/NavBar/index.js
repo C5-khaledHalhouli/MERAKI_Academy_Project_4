@@ -15,6 +15,7 @@ if(!isLoggedIn.isLoggedIn){
   return <>
   <h2>Title</h2>
   <Link to="/">Home</Link>
+  <Link to="/category/createService">Create Service</Link>
   </>
 }
 }

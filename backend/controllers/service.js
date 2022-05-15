@@ -1,5 +1,6 @@
 const serviceModel = require("../models/serviceSchema");
 const categoryModel = require("../models/categorySchema");
+const usersModel=require("../models/userSchema")
 
 // create function to create service
 // use post request
@@ -41,7 +42,24 @@ const createNeWService = (req, res) => {
           { returnDocument: "after" }
         )
         .then((result1) => {
-          console.log(result1);
+          res.status(201).json({
+            success: true,
+            data: result1,
+          });
+        })
+        .catch((err) => {
+          res.status(500).json({
+            success: false,
+            message: "Server Error",
+            err: err.message,
+          });
+        });
+        usersModel.findOneAndUpdate(
+          { _id: user },
+          { $push: { services: result._id } },
+          { returnDocument: "after" }
+        )
+        .then((result1) => {
           res.status(201).json({
             success: true,
             data: result1,

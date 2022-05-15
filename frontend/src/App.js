@@ -7,7 +7,7 @@ import { NavBar } from "./components/NavBar/index";
 import jwtDecode from "jwt-decode";
 import { MainPage } from "./components/MainPage/MainPage";
 import { Service } from "./components/Service/Service";
-import { createService } from "./components/CreateService/CreateService";
+import { CreateService } from "./components/CreateService/CreateService";
 // make variable of context
 export const tokenContext = createContext();
 function App() {
@@ -38,9 +38,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/category/:categoryID/service" element={<Service />} />
+          <Route path="/category/createService" element={<CreateService/>}/>
         </Routes>
       </tokenContext.Provider>
-      <Service />
+      
     </div>
   );
 }
