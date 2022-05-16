@@ -42,7 +42,7 @@ function App() {
           <Route path="/category/createService" element={<CreateService />} />
           
           <Route
-            path="/category/service/:serviceID/feedback"
+            path="/category/service/:serviceID"
             element={<CreateFeedback />}
           />
         </Routes>
