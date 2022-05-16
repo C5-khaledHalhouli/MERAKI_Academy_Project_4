@@ -23,7 +23,7 @@ useEffect(()=>{
 },[])
 // return each category and make it as link with path of categoryID
 return <div>{category&&category.map((element,index)=>{
-    return <Link key={index} to={`/category/${element._id}/service`} >{element.name}</Link>
+    return <Link key={index} to={`/category/${element._id}/services`} >{element.name}</Link>
 })}</div>
 }
 

@@ -11,7 +11,6 @@ const serviceModel = require("../models/serviceSchema");
 // return the false if its not sucess
 const createNeWFeedback = (req, res) => {
   const serviceID = req.params.serviceID;
-  console.log(serviceID);
   const { rate, Comment, user } = req.body;
   const newFeedback = new feedbackModel({
     rate,

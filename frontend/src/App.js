@@ -6,8 +6,9 @@ import { Routes, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar/index";
 import jwtDecode from "jwt-decode";
 import { MainPage } from "./components/MainPage/MainPage";
-import { Service } from "./components/Service/Service";
+import { Services } from "./components/Services/Services";
 import { CreateService } from "./components/CreateService/CreateService";
+import { CreateFeedback } from "./components/CreateFeedback";
 // make variable of context
 export const tokenContext = createContext();
 function App() {
@@ -37,11 +38,15 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<MainPage />} />
-          <Route path="/category/:categoryID/service" element={<Service />} />
-          <Route path="/category/createService" element={<CreateService/>}/>
+          <Route path="/category/:categoryID/services" element={<Services />} />
+          <Route path="/category/createService" element={<CreateService />} />
+          
+          <Route
+            path="/category/service/:serviceID/feedback"
+            element={<CreateFeedback />}
+          />
         </Routes>
       </tokenContext.Provider>
-      
     </div>
   );
 }

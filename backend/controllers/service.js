@@ -88,7 +88,7 @@ const getAllServices = (req, res) => {
   const categoryID = req.params.categoryID;
   categoryModel
     .findOne({ _id: categoryID })
-    .populate("services", "-_id")
+    .populate("services")
     .then((result) => {
       res.status(200).json(result.services);
     })
