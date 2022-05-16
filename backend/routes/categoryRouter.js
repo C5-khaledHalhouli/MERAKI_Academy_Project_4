@@ -12,6 +12,7 @@ const {
   getAllServices,
   updateOfService,
   deleteService,
+  serviceById,
 } = require("../controllers/service");
 const {
   createNeWFeedback,
@@ -27,6 +28,7 @@ categoryRouter.post("/service/:serviceID/feedback",authentication, createNeWFeed
 categoryRouter.get("/", getAllCategory);
 categoryRouter.get("/service/:serviceID/feedback", getAllFeedback);
 categoryRouter.get("/:categoryID/service", getAllServices);
+categoryRouter.get("/service/:serviceID",serviceById)
 //Put request
 categoryRouter.put("/service/:serviceID",authentication, updateOfService);
 //! when make admin

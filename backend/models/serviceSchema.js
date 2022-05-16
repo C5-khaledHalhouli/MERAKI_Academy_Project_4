@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 
 const serviceSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  category: { type: mongoose.Schema.Types.ObjectId, ref: "category" },
+  category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
   description: { type: String, required: true },
-  user: { type: mongoose.Schema.Types.ObjectId },
+  user: { type: mongoose.Schema.Types.ObjectId, ref:"User" },
   cost: { type: String },
   img: { type: Buffer },
   feedback: { type: mongoose.Schema.Types.ObjectId, ref: "feedback" },

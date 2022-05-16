@@ -9,6 +9,7 @@ import { MainPage } from "./components/MainPage/MainPage";
 import { Services } from "./components/Services/Services";
 import { CreateService } from "./components/CreateService/CreateService";
 import { CreateFeedback } from "./components/CreateFeedback";
+import { Service } from "./components/Service";
 // make variable of context
 export const tokenContext = createContext();
 function App() {
@@ -40,10 +41,10 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/category/:categoryID/services" element={<Services />} />
           <Route path="/category/createService" element={<CreateService />} />
-          
+          {/* <Route path="/category/service/:serviceID" element={<Service/>}/> */}
           <Route
             path="/category/service/:serviceID"
-            element={<CreateFeedback />}
+            element={<Service/>}
           />
         </Routes>
       </tokenContext.Provider>

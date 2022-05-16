@@ -1,6 +1,7 @@
 const serviceModel = require("../models/serviceSchema");
 const categoryModel = require("../models/categorySchema");
-const usersModel=require("../models/userSchema")
+const usersModel=require("../models/userSchema");
+const { populate } = require("../models/userSchema");
 
 // create function to create service
 // use post request
@@ -156,4 +157,13 @@ const deleteService=(req,res)=>{
         res.status(500).json(err.message)
     })
 }
-module.exports = { createNeWService, getAllServices,updateOfService,deleteService };
+// Create function to get service by Id
+const serviceById =(req,res)=>{
+  const serviceID=req.params.serviceID
+  serviceModel.findOne({_id:serviceID}).populate("category",("name-_id")).populate("user","firstName -_id").then((result)=>{
+    res.status(200).json({success:true,result:result})
+  }).catch((err)=>{
+    res.status(500).json({success:false,err:err})
+  })
+}
+module.exports = { createNeWService, getAllServices,updateOfService,deleteService,serviceById };
