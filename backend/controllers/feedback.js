@@ -11,10 +11,11 @@ const serviceModel = require("../models/serviceSchema");
 // return the false if its not sucess
 const createNeWFeedback = (req, res) => {
   const serviceID = req.params.serviceID;
-  const { rate, Comment, user } = req.body;
+  const { rate, comment } = req.body;
+  const user =req.token._id
   const newFeedback = new feedbackModel({
     rate,
-    Comment,
+    comment,
     user,
     serviceID,
   });
@@ -57,8 +58,8 @@ const createNeWFeedback = (req, res) => {
 // responce the data
 const getAllFeedback = (req, res) => {
   const serviceID = req.params.serviceID;
-  serviceModel
-    .findOne({ _id: serviceID })
+  feedbackModel
+    .find({ serviceID: serviceID }).populate("user","firstName-_id")
     .then((result) => {
       res.status(200).json(result);
     })

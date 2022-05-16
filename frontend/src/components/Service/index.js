@@ -14,12 +14,16 @@ useEffect(()=>{
     }).catch((err)=>{
         console.log(err);
     })
+},[])
+useEffect(()=>{
     axios.get(`http://localhost:5000/category/service/${serviceID}/feedback`).then((result)=>{
-console.log("result",result.data);
+    setFeedback(result.data)
     }).catch((err)=>{
         console.log("err",err);
     })
-},[])
+
+
+})
     return<>
     <h2>{service&&service.title}</h2>
     <p>Category :{service&&service.category.name}</p>
@@ -29,7 +33,14 @@ console.log("result",result.data);
     <p>City: {service&&service.cities.map((element)=>{return <p>{element}</p> })}</p>
     <p>Cost:{service&&service.cost}</p>
    <p>----------</p> 
-    <p>{feedback&&feedback.rate}</p>
+    <p>{feedback&&feedback.map((element)=>{
+        return <>
+        <p>{element.user.firstName}</p>
+        <p>{element.rate}</p>
+        <p>{element.comment}</p>
+        <p>-------------------</p>
+        </>
+    })}</p>
 
     <CreateFeedback/>
     </>
