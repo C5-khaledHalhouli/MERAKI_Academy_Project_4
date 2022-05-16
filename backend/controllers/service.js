@@ -1,6 +1,6 @@
 const serviceModel = require("../models/serviceSchema");
 const categoryModel = require("../models/categorySchema");
-const usersModel=require("../models/userSchema");
+const usersModel = require("../models/userSchema");
 const { populate } = require("../models/userSchema");
 
 // create function to create service
@@ -10,17 +10,20 @@ const { populate } = require("../models/userSchema");
 // return true if its sucess
 // return the false if its not sucess
 const createNeWService = (req, res) => {
+  // const userId = req.token.userId
+
   const {
     title,
     category,
     description,
-    user,
     cost,
     img,
     feedback,
     country,
     cities,
   } = req.body;
+  const user = req.token._id
+
   const newService = new serviceModel({
     title,
     category,
@@ -43,10 +46,10 @@ const createNeWService = (req, res) => {
           { returnDocument: "after" }
         )
         .then((result1) => {
-          res.status(201).json({
-            success: true,
-            data: result1,
-          });
+          // res.status(201).json({
+          //   success: true,
+          //   data: result1,
+          // });
         })
         .catch((err) => {
           res.status(500).json({
@@ -55,16 +58,17 @@ const createNeWService = (req, res) => {
             err: err.message,
           });
         });
-        usersModel.findOneAndUpdate(
+      usersModel
+        .findOneAndUpdate(
           { _id: user },
           { $push: { services: result._id } },
           { returnDocument: "after" }
         )
         .then((result1) => {
-          res.status(201).json({
-            success: true,
-            data: result1,
-          });
+          // res.status(201).json({
+          //   success: true,
+          //   data: result1,
+          // });
         })
         .catch((err) => {
           res.status(500).json({
@@ -73,6 +77,7 @@ const createNeWService = (req, res) => {
             err: err.message,
           });
         });
+        res.status(201).json({success:true,data:result})
     })
     .catch((err) => {
       res.status(500).json({
@@ -111,13 +116,13 @@ const updateOfService = (req, res) => {
     title,
     category,
     description,
-    user,
     cost,
     img,
     feedback,
     country,
     cities,
   } = req.body;
+  const user = token._id
   serviceModel
     .findOneAndUpdate(
       { _id: serviceID },
@@ -149,21 +154,36 @@ const updateOfService = (req, res) => {
 // get the serviceId by params
 // use findoneanddelete to delete service
 // responce the delete service
-const deleteService=(req,res)=>{
-    const serviceID=req.params.serviceID
-    serviceModel.findOneAndDelete({_id:serviceID}).then((result)=>{
-        res.status(200).json(result)
-    }).catch((err)=>{
-        res.status(500).json(err.message)
+const deleteService = (req, res) => {
+  const serviceID = req.params.serviceID;
+  serviceModel
+    .findOneAndDelete({ _id: serviceID })
+    .then((result) => {
+      res.status(200).json(result);
     })
-}
+    .catch((err) => {
+      res.status(500).json(err.message);
+    });
+};
 // Create function to get service by Id
-const serviceById =(req,res)=>{
-  const serviceID=req.params.serviceID
-  serviceModel.findOne({_id:serviceID}).populate("category",("name-_id")).populate("user","firstName -_id").then((result)=>{
-    res.status(200).json({success:true,result:result})
-  }).catch((err)=>{
-    res.status(500).json({success:false,err:err})
-  })
-}
-module.exports = { createNeWService, getAllServices,updateOfService,deleteService,serviceById };
+const serviceById = (req, res) => {
+  const serviceID = req.params.serviceID;
+  serviceModel
+    .findOne({ _id: serviceID })
+    .populate("category", "name-_id")
+    .populate("user", "firstName -_id").populate("Feedback")
+    .then((result) => {
+      console.log(result);
+      res.status(200).json({ success: true, result: result });
+    })
+    .catch((err) => {
+      res.status(500).json({ success: false, err: err });
+    });
+};
+module.exports = {
+  createNeWService,
+  getAllServices,
+  updateOfService,
+  deleteService,
+  serviceById,
+};

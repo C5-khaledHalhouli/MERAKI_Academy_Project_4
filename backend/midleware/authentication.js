@@ -19,6 +19,7 @@ const authentication = (req, res, next) => {
         message: "The token is invalid or expired",
       });
     }
+   req.token=result
     next();
   });
 };
