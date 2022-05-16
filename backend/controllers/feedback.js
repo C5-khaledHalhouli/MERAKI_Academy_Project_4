@@ -16,6 +16,7 @@ const createNeWFeedback = (req, res) => {
     rate,
     Comment,
     user,
+    serviceID,
   });
 
   newFeedback
@@ -58,7 +59,6 @@ const getAllFeedback = (req, res) => {
   const serviceID = req.params.serviceID;
   serviceModel
     .findOne({ _id: serviceID })
-    .populate("feedback")
     .then((result) => {
       res.status(200).json(result);
     })

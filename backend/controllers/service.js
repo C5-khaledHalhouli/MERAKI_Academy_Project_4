@@ -171,9 +171,8 @@ const serviceById = (req, res) => {
   serviceModel
     .findOne({ _id: serviceID })
     .populate("category", "name-_id")
-    .populate("user", "firstName -_id").populate("Feedback")
+    .populate("user", "firstName -_id").populate("feedback")
     .then((result) => {
-      console.log(result);
       res.status(200).json({ success: true, result: result });
     })
     .catch((err) => {

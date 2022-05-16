@@ -6,6 +6,7 @@ const feedbackSchema = new mongoose.Schema({
   rate: { type: Number, min: 1, max: 5, required: true },
   Comment: { type: String },
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  serviceID:{type:mongoose.Schema.Types.ObjectId,ref:"Service"}
 });
 
 // make model and export the schema
