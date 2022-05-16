@@ -8,7 +8,7 @@ import jwtDecode from "jwt-decode";
 import { MainPage } from "./components/MainPage/MainPage";
 import { Services } from "./components/Services/Services";
 import { CreateService } from "./components/CreateService/CreateService";
-import { CreateFeedback } from "./components/CreateFeedback";
+import { MyServices } from "./components/MyServices";
 import { Service } from "./components/Service";
 // make variable of context
 export const tokenContext = createContext();
@@ -46,6 +46,7 @@ function App() {
             path="/category/service/:serviceID"
             element={<Service/>}
           />
+          <Route path="/user/myServices" element={<MyServices/>}/>
         </Routes>
       </tokenContext.Provider>
     </div>

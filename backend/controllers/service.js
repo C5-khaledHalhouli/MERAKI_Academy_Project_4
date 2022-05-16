@@ -179,10 +179,25 @@ const serviceById = (req, res) => {
       res.status(500).json({ success: false, err: err });
     });
 };
+// create function to get service by userId
+const serviceByUserID = (req, res) => {
+  const userID = req.token._id;
+  console.log(userID,11111111111111111111111111);
+  serviceModel
+    .find({ user:userID })
+    .populate("category", "name-_id")
+    .populate("user", "firstName -_id")
+    .then((result) => {
+      res.status(200).json({ success: true, result: result });
+    })
+    .catch((err) => {
+      res.status(500).json({ success: false, err: "11111111" });
+    });
+};
 module.exports = {
   createNeWService,
   getAllServices,
   updateOfService,
   deleteService,
-  serviceById,
+  serviceById,serviceByUserID
 };
