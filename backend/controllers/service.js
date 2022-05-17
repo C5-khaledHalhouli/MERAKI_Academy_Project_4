@@ -122,7 +122,7 @@ const updateOfService = (req, res) => {
     country,
     cities,
   } = req.body;
-  const user = token._id
+  const user = req.token._id
   serviceModel
     .findOneAndUpdate(
       { _id: serviceID },
@@ -182,7 +182,6 @@ const serviceById = (req, res) => {
 // create function to get service by userId
 const serviceByUserID = (req, res) => {
   const userID = req.token._id;
-  console.log(userID,11111111111111111111111111);
   serviceModel
     .find({ user:userID })
     .populate("category", "name-_id")

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
   import { Link } from 'react-router-dom'
-
-const NavBar=(isLoggedIn)=>{
-if(!isLoggedIn.isLoggedIn){
+ 
+  const NavBar=(isLoggedIn)=>{
+   
+    if(!isLoggedIn.isLoggedIn){
     return <>
     <h2>Title</h2>
     <Link to="/">Home</Link>
@@ -20,4 +21,5 @@ if(!isLoggedIn.isLoggedIn){
   </>
 }
 }
+
 export {NavBar}

@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// write function to updateservice
+const UpdateService = () => {
+  const navigate = useNavigate();
+  const { serviceID } = useParams();
 
-// write function to createservice
-const CreateService = () => {
   // write state for each category
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Landscape");
   const [service, setService] = useState("");
   const [description, setDescription] = useState("");
   const [cost, setCost] = useState("");
-  const [user, setUser] = useState("");
   const [country, setCountry] = useState("Jordan");
   const [city, setCity] = useState("");
-  const [countries,setCountries]=useState("")
+  const [countries, setCountries] = useState("");
+  const [cities,setCities]=useState("")
   useEffect(() => {
-    axios.get("http://localhost:5000/category").then((result) => {
-      // change the value of category to its id in db
-      result.data.data.forEach((element) => {
-        if (element.name.toLowerCase() === category.toLowerCase()) {
-          setCategory(element._id);
-        }
-      });
-    });
-  }, [category]);
+      axios.post("https://countriesnow.space/api/v0.1/countries/states",{
+        "country": `${country}`
+      }).then((result)=>{
+          setCities(result.data.data.states)
+      }).catch((err)=>{
+          console.log(err);
+      })
+  }, [country]);
   useEffect(() => {
     axios
       .get("https://countriesnow.space/api/v0.1/countries/capital")
@@ -33,23 +35,31 @@ const CreateService = () => {
         console.log(err);
       });
   }, []);
+  useEffect(() => {
+    axios.get("http://localhost:5000/category").then((result) => {
+      // change the value of category to its id in db
+      result.data.data.forEach((element) => {
+        if (element.name.toLowerCase() === category.toLowerCase()) {
+          setCategory(element._id);
+        }
+      });
+    });
+  }, [category]);
   // create function when we click on Create Service
-  const clickCreateService = () => {
+  const clickUpdateService = () => {
     const token = localStorage.getItem("token");
-    setUser(jwtDecode(token)._id);
-
+console.log(city);
     // send the req to backend with data and token
     axios
-      .post(
-        "http://localhost:5000/category/service",
+      .put(
+        `http://localhost:5000/category/service/${serviceID}`,
         {
           title: service,
-          category: category,
+          category: category && category,
           description: description,
-          user: user,
           cost: cost,
           country: country,
-          city: city,
+          cities: city,
         },
         {
           headers: {
@@ -59,6 +69,7 @@ const CreateService = () => {
       )
       .then((result) => {
         console.log(result);
+        navigate(-1);
       })
       .catch((err) => {
         console.log("err", err);
@@ -66,6 +77,8 @@ const CreateService = () => {
   };
   return (
     <>
+      {" "}
+      <h2>Update</h2>
       <p className="ServiceInfo">Service</p>
       <input
         placeholder="Service"
@@ -94,7 +107,6 @@ const CreateService = () => {
         <option>Other</option>
       </select>
       <p>Cost</p>
-
       <input
         placeholder="20$ per m2"
         onChange={(e) => {
@@ -102,13 +114,14 @@ const CreateService = () => {
         }}
       />
       <p>Country</p>
-      <input list="countries"
+      <input
+        list="countries"
         placeholder="Jordan"
         onChange={(e) => {
           setCountry(e.target.value);
         }}
       />
-        <datalist id="countries">
+      <datalist id="countries">
         {countries &&
           countries.map((element) => {
             return <option value={element.name}>{element.name}</option>;
@@ -118,12 +131,13 @@ const CreateService = () => {
       <input
         placeholder="amman,irbed"
         onChange={(e) => {
-          setCity(e.target.value);
+          setCity((e.target.value).split(","));
         }}
       />
-      <button onClick={clickCreateService}>Create Service</button>
+      <button onClick={clickUpdateService}>Update</button>
+
     </>
   );
 };
 
-export { CreateService };
+export { UpdateService };

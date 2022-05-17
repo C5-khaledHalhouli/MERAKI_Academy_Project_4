@@ -10,6 +10,7 @@ import { Services } from "./components/Services/Services";
 import { CreateService } from "./components/CreateService/CreateService";
 import { MyServices } from "./components/MyServices";
 import { Service } from "./components/Service";
+import { UpdateService } from "./components/UpdateService";
 // make variable of context
 export const tokenContext = createContext();
 function App() {
@@ -47,6 +48,7 @@ function App() {
             element={<Service/>}
           />
           <Route path="/user/myServices" element={<MyServices/>}/>
+          <Route path="/user/myservices/:serviceID/update" element={<UpdateService/>}/>
         </Routes>
       </tokenContext.Provider>
     </div>
