@@ -14,6 +14,7 @@ import { UpdateService } from "./components/UpdateService";
 // make variable of context
 export const tokenContext = createContext();
 function App() {
+  const [result,setResult]=useState("")
   //  write stat for token and isLoggedIn
   const [isLoggedIn, setIsloggedIn] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -33,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <h1>Hello world</h1>
-      <NavBar isLoggedIn={isLoggedIn} />
+      <NavBar isLoggedIn={isLoggedIn} setResult={setResult} />
 
       <tokenContext.Provider value={setToken}>
         <Routes>
@@ -49,6 +50,7 @@ function App() {
           />
           <Route path="/user/myServices" element={<MyServices/>}/>
           <Route path="/user/myservices/:serviceID/update" element={<UpdateService/>}/>
+          <Route path="/search" element={<SearchPage result={result}/>}/>
         </Routes>
       </tokenContext.Provider>
     </div>

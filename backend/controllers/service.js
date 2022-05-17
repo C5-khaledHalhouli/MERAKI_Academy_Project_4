@@ -12,17 +12,9 @@ const { populate } = require("../models/userSchema");
 const createNeWService = (req, res) => {
   // const userId = req.token.userId
 
-  const {
-    title,
-    category,
-    description,
-    cost,
-    img,
-    feedback,
-    country,
-    cities,
-  } = req.body;
-  const user = req.token._id
+  const { title, category, description, cost, img, feedback, country, cities } =
+    req.body;
+  const user = req.token._id;
 
   const newService = new serviceModel({
     title,
@@ -77,7 +69,7 @@ const createNeWService = (req, res) => {
             err: err.message,
           });
         });
-        res.status(201).json({success:true,data:result})
+      res.status(201).json({ success: true, data: result });
     })
     .catch((err) => {
       res.status(500).json({
@@ -106,23 +98,28 @@ const getAllServices = (req, res) => {
       });
     });
 };
+// create function to  get all service
+const allServices = (req, res) => {
+  serviceModel
+    .find()
+    .populate("category", "name-_id")
+    .populate("user", "firstName -_id")
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(404).json(err);
+    });
+};
 // create function to update the date in service
 // use findoneandupdate to get the data from db and update it
 // get serviceId by params
 // get the data from the body
 const updateOfService = (req, res) => {
   const serviceID = req.params.serviceID;
-  const {
-    title,
-    category,
-    description,
-    cost,
-    img,
-    feedback,
-    country,
-    cities,
-  } = req.body;
-  const user = req.token._id
+  const { title, category, description, cost, img, feedback, country, cities } =
+    req.body;
+  const user = req.token._id;
   serviceModel
     .findOneAndUpdate(
       { _id: serviceID },
@@ -171,7 +168,8 @@ const serviceById = (req, res) => {
   serviceModel
     .findOne({ _id: serviceID })
     .populate("category", "name-_id")
-    .populate("user", "firstName -_id").populate("feedback")
+    .populate("user", "firstName -_id")
+    .populate("feedback")
     .then((result) => {
       res.status(200).json({ success: true, result: result });
     })
@@ -183,7 +181,7 @@ const serviceById = (req, res) => {
 const serviceByUserID = (req, res) => {
   const userID = req.token._id;
   serviceModel
-    .find({ user:userID })
+    .find({ user: userID })
     .populate("category", "name-_id")
     .populate("user", "firstName -_id")
     .then((result) => {
@@ -198,5 +196,7 @@ module.exports = {
   getAllServices,
   updateOfService,
   deleteService,
-  serviceById,serviceByUserID
+  serviceById,
+  serviceByUserID,
+  allServices,
 };
