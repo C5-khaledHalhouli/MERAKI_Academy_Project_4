@@ -11,6 +11,7 @@ import { CreateService } from "./components/CreateService/CreateService";
 import { MyServices } from "./components/MyServices";
 import { Service } from "./components/Service";
 import { UpdateService } from "./components/UpdateService";
+import { SearchPage } from "./components/SearchPage";
 // make variable of context
 export const tokenContext = createContext();
 function App() {
