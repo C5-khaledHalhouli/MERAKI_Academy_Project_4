@@ -1,0 +1,17 @@
+#search{
+    display: flex;
+    height: 85%;
+    align-items: center;
+    justify-content: center;
+    gap: 10;
+}
+#searchInput{
+    width: 70%;
+    height: 36%;
+    font-size: 18px;
+}
+#searchButton{
+    height: 26px;
+    font-size: 18px;
+    margin: 0% 7%;
+}

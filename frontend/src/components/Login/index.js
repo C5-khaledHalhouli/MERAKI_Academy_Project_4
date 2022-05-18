@@ -1,3 +1,4 @@
+import "./style.css";
 import React,{useState,useContext} from 'react'
 import axios from 'axios'
 import {tokenContext} from '../../App'
@@ -29,18 +30,21 @@ export const Login = () => {
 }
 
   return (
-    <div>Login
-      <p>Email</p>
+    <div id="login">
+      <div>
+
+      <p className="loginPar">Email</p>
       <input onChange={(e)=>{
         console.log(e.target.value);
         setEmail(e.target.value.toLowerCase())
-      }} placeholder='Email' type="email"  />
-      <p>Password</p>
+      }} placeholder='Email' type="email"  className="loginInput"/>
+      <p className="loginPar">Password</p>
       <input onChange={(e)=>{
         setPassword(e.target.value)
-      }}placeholder='Password' type="password"/>
-      <button onClick={loginClick}>Login</button>
+      }}placeholder='Password' type="password" className="loginInput"/>
+      <button onClick={loginClick} className="loginButton">Login</button>
       <p>{message}</p>
+      </div>
     </div>
   )
 }

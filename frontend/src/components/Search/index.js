@@ -1,3 +1,4 @@
+import "./style.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -49,19 +50,19 @@ const Search = ({ setResult }) => {
     console.log(servicesName);
   };
   return (
-    <>
+    <div id="search">
       <input
         placeholder="search"
         onChange={(e) => {
           setSearch(e.target.value);
         }}
-      />
+      id="searchInput"/>
       <Link to="/search">
-        <button on onClick={searchClick}>
+        <button on onClick={searchClick} id="searchButton">
           search
         </button>
       </Link>
-    </>
+    </div>
   );
 };
 export { Search };

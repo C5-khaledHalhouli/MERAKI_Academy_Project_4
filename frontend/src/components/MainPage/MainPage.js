@@ -1,3 +1,5 @@
+import "./style.css";
+
 import React,{useEffect,useState} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -22,8 +24,8 @@ useEffect(()=>{
     
 },[])
 // return each category and make it as link with path of categoryID
-return <div>{category&&category.map((element,index)=>{
-    return <Link key={index} to={`/category/${element._id}/services`} >{element.name}</Link>
+return <div id="categories">{category&&category.map((element,index)=>{
+    return <div className="category"><Link key={index} to={`/category/${element._id}/services`} >{element.name}</Link></div>
 })}</div>
 }
 
