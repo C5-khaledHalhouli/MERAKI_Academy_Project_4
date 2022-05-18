@@ -1,0 +1,19 @@
+.title{
+    padding: 4% 7%;
+}
+
+.homeList{
+    height: auto;
+    width: auto;
+    gap: 10%;
+    display: flex;
+    justify-content:flex-end;
+    padding: 4% 7%;
+}
+.homeListElement{
+    height: 100%;
+
+    font-size: 20px;
+    align-items: center;
+
+}

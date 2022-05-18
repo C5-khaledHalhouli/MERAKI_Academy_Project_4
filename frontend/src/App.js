@@ -1,4 +1,4 @@
-// import './App.css';
+import "./App.css";
 import React, { createContext, useState, useEffect } from "react";
 import { Register } from "./components/Register";
 import { Login } from "./components/Login";
@@ -15,7 +15,7 @@ import { SearchPage } from "./components/SearchPage";
 // make variable of context
 export const tokenContext = createContext();
 function App() {
-  const [result,setResult]=useState("")
+  const [result, setResult] = useState("");
   //  write stat for token and isLoggedIn
   const [isLoggedIn, setIsloggedIn] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -34,26 +34,34 @@ function App() {
   }, [token]);
   return (
     <div className="App">
-      <h1>Hello world</h1>
-      <NavBar isLoggedIn={isLoggedIn} setResult={setResult} />
-
-      <tokenContext.Provider value={setToken}>
-        <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<MainPage />} />
-          <Route path="/category/:categoryID/services" element={<Services />} />
-          <Route path="/category/createService" element={<CreateService />} />
-          {/* <Route path="/category/service/:serviceID" element={<Service/>}/> */}
-          <Route
-            path="/category/service/:serviceID"
-            element={<Service/>}
-          />
-          <Route path="/user/myServices" element={<MyServices/>}/>
-          <Route path="/user/myservices/:serviceID/update" element={<UpdateService/>}/>
-          <Route path="/search" element={<SearchPage result={result}/>}/>
-        </Routes>
-      </tokenContext.Provider>
+      <div className="navbar">
+        <NavBar isLoggedIn={isLoggedIn} setResult={setResult} />
+      </div>
+      <div className="mainPage">
+        <tokenContext.Provider value={setToken}>
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<MainPage />} />
+            <Route
+              path="/category/:categoryID/services"
+              element={<Services />}
+            />
+            <Route path="/category/createService" element={<CreateService />} />
+            {/* <Route path="/category/service/:serviceID" element={<Service/>}/> */}
+            <Route path="/category/service/:serviceID" element={<Service />} />
+            <Route path="/user/myServices" element={<MyServices />} />
+            <Route
+              path="/user/myservices/:serviceID/update"
+              element={<UpdateService />}
+            />
+            <Route path="/search" element={<SearchPage result={result} />} />
+          </Routes>
+        </tokenContext.Provider>
+      </div>
+      <div className="footer">
+        <p>Footer</p>
+      </div>
     </div>
   );
 }
