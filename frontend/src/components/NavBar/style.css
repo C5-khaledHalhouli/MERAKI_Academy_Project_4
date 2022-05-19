@@ -15,6 +15,12 @@
     height: 100%;
 
     font-size: 20px;
+    font-weight: 600;
     align-items: center;
+    color: #271c18;
+    text-decoration: none;
 
+}
+.logoImg{
+    height: 50%;
 }

@@ -2,12 +2,13 @@ import "./style.css";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Search } from "../Search";
+import logo from "./assist/image/logo.png"
 const NavBar = ({ isLoggedIn, setResult }) => {
   console.log(isLoggedIn);
   if (!isLoggedIn) {
     return (
       <>
-        <h2 className="title">Title</h2>
+        <img src={logo} className="logoImg"/>
         <div className="search">
           <Search setResult={setResult} />
         </div>
@@ -24,7 +25,7 @@ const NavBar = ({ isLoggedIn, setResult }) => {
       <>
       
       
-        <h2 className="title">Title</h2>
+      <img src={logo} className="logoImg"/>
         <div className="search">
           <Search setResult={setResult} />
         </div>

@@ -27,7 +27,7 @@ const MyServices = () => {
   });
   return (
     <div className="myServices">
-      <h2>My Services</h2>
+      <h2 className="myServiceTitle">My Services</h2>
       {services &&
         services.map((element) => {
           return (
