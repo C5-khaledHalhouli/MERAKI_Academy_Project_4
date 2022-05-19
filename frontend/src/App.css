@@ -6,21 +6,17 @@
   width: 96vw;
 }
 
-.navbar{
+.navbar {
   display: grid;
-  background-color: aqua;
+  background-color: #ffc527;
   grid-template-columns: auto 20% 30%;
   height: 100%;
   width: 100%;
-  
 }
 .mainPage {
-  background-color: red;
+  background-color: white;
 }
 .footer {
   color: blue;
-  background-color: rgb(129, 75, 8);
+  background-color: #181818;
 }
-/* a {
-  background-color: rgb(129, 75, 8);
-} */

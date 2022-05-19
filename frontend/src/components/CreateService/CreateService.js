@@ -1,3 +1,4 @@
+import "./style.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
@@ -65,64 +66,64 @@ const CreateService = () => {
       });
   };
   return (
-    <>
-      <p className="ServiceInfo">Service</p>
+    <div className="createService">
+      <p className="serviceInfo">Service</p>
       <input
-        placeholder="Service"
+        placeholder="Service" className="serviceInput"
         onChange={(e) => {
           setService(e.target.value);
         }}
       />
-      <p>Description</p>
+      <p className="serviceInfo">Description</p>
       <input
-        placeholder="Description"
+        placeholder="Description" id="description"
         onChange={(e) => {
           setDescription(e.target.value);
         }}
       />
-      <p>Category</p>
-      <select
+      <p className="serviceInfo">Category</p>
+      <select 
         onChange={(e) => {
           setCategory(e.target.value);
         }}
       >
-        <option>Landscape</option>
+        <option>LandScape</option>
         <option>Construction</option>
         <option>Finishing</option>
         <option>Electrical maintenance</option>
         <option>Machanical maintenance</option>
         <option>Other</option>
       </select>
-      <p>Cost</p>
+      <p className="serviceInfo">Cost</p>
 
       <input
-        placeholder="20$ per m2"
+        placeholder="20$ per m2" className="serviceInput"
         onChange={(e) => {
           setCost(e.target.value);
         }}
       />
-      <p>Country</p>
-      <input list="countries"
+      <p className="serviceInfo">Country</p>
+      <input list="countries" className="serviceInput"
         placeholder="Jordan"
         onChange={(e) => {
           setCountry(e.target.value);
         }}
       />
-        <datalist id="countries">
+        <datalist className="serviceInput">
         {countries &&
           countries.map((element) => {
             return <option value={element.name}>{element.name}</option>;
           })}
       </datalist>
-      <p>City</p>
+      <p className="serviceInfo">City</p>
       <input
         placeholder="amman,irbed"
         onChange={(e) => {
           setCity(e.target.value);
-        }}
+        }} className="serviceInput"
       />
-      <button onClick={clickCreateService}>Create Service</button>
-    </>
+      <button onClick={clickCreateService} className="createButton">Create Service</button>
+    </div>
   );
 };
 

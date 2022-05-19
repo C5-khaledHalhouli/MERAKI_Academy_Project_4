@@ -21,7 +21,9 @@ const NavBar = ({ isLoggedIn, setResult }) => {
   } else {
     console.log(true);
     return (
-      <div className="navbar">
+      <>
+      
+      
         <h2 className="title">Title</h2>
         <div className="search">
           <Search setResult={setResult} />
@@ -31,7 +33,7 @@ const NavBar = ({ isLoggedIn, setResult }) => {
           <Link to="/category/createService" className="homeListElement">Create Service</Link>
           <Link to={`/user/myservices`} className="homeListElement">My services</Link>
         </div>
-      </div>
+        </>
     );
   }
 };
