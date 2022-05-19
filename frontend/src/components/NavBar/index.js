@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Search } from "../Search";
 const NavBar = ({ isLoggedIn, setResult }) => {
-  if (!isLoggedIn.isLoggedIn) {
+  console.log(isLoggedIn);
+  if (!isLoggedIn) {
     return (
       <>
         <h2 className="title">Title</h2>
@@ -18,6 +19,7 @@ const NavBar = ({ isLoggedIn, setResult }) => {
       </>
     );
   } else {
+    console.log(true);
     return (
       <div className="navbar">
         <h2 className="title">Title</h2>

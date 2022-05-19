@@ -9,7 +9,7 @@
 .navbar{
   display: grid;
   background-color: aqua;
-  grid-template-columns: 50% 20% 30%;
+  grid-template-columns: auto 20% 30%;
   height: 100%;
   width: 100%;
   

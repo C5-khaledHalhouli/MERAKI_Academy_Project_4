@@ -3,6 +3,25 @@
   flex-wrap: wrap;
   gap: 7%;
   margin: 5%;
+  justify-content: center;
+  align-items: center;
 }
 .category {
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+    height: 250px;
+    width: 300px;
+    background-color: yellow;
+}
+.categoryImg{
+    height: 90%;
+    width: 100%;
+    display: block;
+}
+.categoryName{
+    font-size: 30px;
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
 }

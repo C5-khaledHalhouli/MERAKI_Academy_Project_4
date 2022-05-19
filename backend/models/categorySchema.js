@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 
 const categorySchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
-  services:[{type:mongoose.Schema.Types.ObjectId,ref:"Service"}]
+  services:[{type:mongoose.Schema.Types.ObjectId,ref:"Service"}],
+  img : {type:String }
 });
 // make model and export the schema
 module.exports = mongoose.model("Category", categorySchema);

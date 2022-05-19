@@ -17,7 +17,7 @@ export const tokenContext = createContext();
 function App() {
   const [result, setResult] = useState("");
   //  write stat for token and isLoggedIn
-  const [isLoggedIn, setIsloggedIn] = useState(false);
+  const [isLoggedIn, setIsloggedIn] = useState(true);
   const [token, setToken] = useState(localStorage.getItem("token"));
   // check if we have token in localstorage if we have we wil save it value in token variable
   useEffect(() => {
@@ -25,13 +25,16 @@ function App() {
       localStorage.getItem("token") !== null &&
       jwtDecode(token).exp * 1000 >= Date.now()
     ) {
+      console.log(111111);
       setIsloggedIn(true);
+      console.log(isLoggedIn);
       localStorage.setItem("isLoggedIn", true);
     } else {
+      console.log(2222222);
       setIsloggedIn(false);
       localStorage.setItem("isLoggedIn", false);
     }
-  }, [token]);
+  },);
   return (
     <div className="App">
       <div className="navbar">
