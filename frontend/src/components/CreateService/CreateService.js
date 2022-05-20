@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import UploadImg from "../UploadIMg";
 // write function to createservice
 const CreateService = () => {
   const navigate= useNavigate()
   // write state for each category
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("LandScape");
   const [service, setService] = useState("");
   const [description, setDescription] = useState("");
   const [cost, setCost] = useState("");
@@ -20,6 +21,7 @@ const CreateService = () => {
       // change the value of category to its id in db
       result.data.data.forEach((element) => {
         if (element.name.toLowerCase() === category.toLowerCase()) {
+          console.log(element._id);
           setCategory(element._id);
         }
       });
@@ -60,7 +62,7 @@ const CreateService = () => {
         }
       )
       .then((result) => {
-
+console.log(result);
         navigate(-1)
       })
       .catch((err) => {
@@ -121,9 +123,11 @@ const CreateService = () => {
       <input
         placeholder="amman,irbed"
         onChange={(e) => {
-          setCity(e.target.value);
+          setCity(e.target.value.split(","));
+        
         }} className="serviceInput"
       />
+      <UploadImg/>
       <button onClick={clickCreateService} className="createButton">Create Service</button>
     </div>
   );

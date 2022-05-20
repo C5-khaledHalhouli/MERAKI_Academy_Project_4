@@ -1,3 +1,4 @@
+const { type } = require("express/lib/response");
 const mongoose = require("mongoose");
 
 // create serviceSchema , it will take objact of the data that expeted and the type of data.
@@ -12,6 +13,7 @@ const serviceSchema = new mongoose.Schema({
   feedback: { type: mongoose.Schema.Types.ObjectId, ref: "Feedback" },
   country: { type: String, required: true },
   cities: [{ type: String, required: true }],
+  img:[{type: String}]
 });
 
 // make model and export the schema
