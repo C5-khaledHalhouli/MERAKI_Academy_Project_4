@@ -84,18 +84,14 @@ const createNeWService = (req, res) => {
 //use find to get the services
 const getAllServices = (req, res) => {
   const categoryID = req.params.categoryID;
-  categoryModel
-    .findOne({ _id: categoryID })
-    .populate("services")
+  serviceModel
+    .find({category:categoryID})
+    .populate("user", "firstName -_id")
     .then((result) => {
-      res.status(200).json(result.services);
+      res.status(200).json(result);
     })
     .catch((err) => {
-      res.status(404).json({
-        success: false,
-        message: "Server Error",
-        err: err.message,
-      });
+      res.status(404).json(err);
     });
 };
 // create function to  get all service

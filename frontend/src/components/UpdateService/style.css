@@ -1,0 +1,34 @@
+.updateService{
+    margin: 3%;
+    display: flex;
+    flex-direction: column;
+}
+.serviceInfo{
+    font-size: 24px;
+    font-weight: 600;
+
+}
+.serviceInput{
+    width: 20%;
+    height: 22px;
+    font-size: 18px;
+}
+select{
+    height: 30px;
+    width: 21%;
+    font-size: 20px;
+}
+#description{
+    height: 70px;
+    width: 50%;
+    font-size: 20px;
+}
+.updateButton{
+    height: 30px;
+    width: 20%;
+    margin-top: 2%;
+    font-size: 20px;
+}
+#updateTitle{
+    font-size: 30px;
+}

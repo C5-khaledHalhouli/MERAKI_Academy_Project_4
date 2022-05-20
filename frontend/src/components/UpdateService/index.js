@@ -1,3 +1,4 @@
+import "./style.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -76,24 +77,24 @@ console.log(city);
       });
   };
   return (
-    <>
+    <div className="updateService">
       {" "}
-      <h2>Update</h2>
-      <p className="ServiceInfo">Service</p>
+      <h2 id="updateTitle">Update the service</h2>
+      <p className="serviceInfo">Service</p>
       <input
-        placeholder="Service"
+        placeholder="Service" className="serviceInput"
         onChange={(e) => {
           setService(e.target.value);
         }}
       />
-      <p>Description</p>
+      <p className="serviceInfo">Description</p>
       <input
-        placeholder="Description"
+        placeholder="Description" id="description"
         onChange={(e) => {
           setDescription(e.target.value);
         }}
       />
-      <p>Category</p>
+      <p className="serviceInfo">Category</p>
       <select
         onChange={(e) => {
           setCategory(e.target.value);
@@ -106,16 +107,17 @@ console.log(city);
         <option>Machanical maintenance</option>
         <option>Other</option>
       </select>
-      <p>Cost</p>
+      <p className="serviceInfo">Cost</p>
       <input
-        placeholder="20$ per m2"
+        placeholder="20$ per m2" className="serviceInput"
         onChange={(e) => {
           setCost(e.target.value);
         }}
       />
-      <p>Country</p>
+      <p className="serviceInfo">Country</p>
       <input
         list="countries"
+        className="serviceInput"
         placeholder="Jordan"
         onChange={(e) => {
           setCountry(e.target.value);
@@ -127,16 +129,16 @@ console.log(city);
             return <option value={element.name}>{element.name}</option>;
           })}
       </datalist>
-      <p>City</p>
+      <p className="serviceInfo">City</p>
       <input
-        placeholder="amman,irbed"
+        placeholder="amman,irbed" className="serviceInput"
         onChange={(e) => {
           setCity((e.target.value).split(","));
         }}
       />
-      <button onClick={clickUpdateService}>Update</button>
+      <button onClick={clickUpdateService} className="updateButton">Update</button>
 
-    </>
+    </div>
   );
 };
 

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 export const Login = () => {
   
   // create navigate 
-  const navigate=useNavigate
+  const navigate=useNavigate()
 
   const {setToken}=useContext(tokenContext)
   
@@ -22,6 +22,7 @@ export const Login = () => {
     axios.post("http://localhost:5000/login",{email:email,password:password}).then((result)=>{
     setMessage(result.data.sucess)
     localStorage.setItem("token",result.data.token)
+    navigate(-1)
   }).catch((err)=>{
     console.log(err);
     setMessage(err.response.data)

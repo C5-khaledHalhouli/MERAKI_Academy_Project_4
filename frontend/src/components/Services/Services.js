@@ -1,3 +1,4 @@
+import "./style.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
@@ -15,6 +16,7 @@ const Services = () => {
     axios
       .get(`http://localhost:5000/category/${categoryID}/service`)
       .then((result) => {
+        console.log(result.data);
         setServices(result.data);
         
       })
@@ -22,18 +24,28 @@ const Services = () => {
   }, []);
 // display the services
   return (
-    <div>
+    <div className="services">
+      <div className="service">
       {services &&
         services.map((element, index) => {
           return (
             <>
-            <Link to= {`/category/service/${element._id}`} >
-              <p>{element.title}</p>
-              <p>{element.user}</p>
+            <Link to= {`/category/service/${element._id}`} className="serviceLink" >
+              <div>
+              <p className="serviceInfo">Service:{element.title} </p>
+              <p className="serviceInfo">User:{element.user.firstName} </p>
+              <p className="serviceInfo">Cities: {element.cities.join(",")}</p>
+              <p className="serviceInfo">
+                Rate: 
+              </p>
+
+              </div>
+              <p className="serviceInfo">Cost: {element.cost} </p>
             </Link>
             </>
           );
         })}
+        </div>
     </div>
   );
 };

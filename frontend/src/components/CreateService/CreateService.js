@@ -2,9 +2,10 @@ import "./style.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-
+import { useNavigate } from "react-router-dom";
 // write function to createservice
 const CreateService = () => {
+  const navigate= useNavigate()
   // write state for each category
   const [category, setCategory] = useState("");
   const [service, setService] = useState("");
@@ -59,7 +60,8 @@ const CreateService = () => {
         }
       )
       .then((result) => {
-        console.log(result);
+
+        navigate(-1)
       })
       .catch((err) => {
         console.log("err", err);
@@ -109,7 +111,7 @@ const CreateService = () => {
           setCountry(e.target.value);
         }}
       />
-        <datalist className="serviceInput">
+        <datalist id="countries">
         {countries &&
           countries.map((element) => {
             return <option value={element.name}>{element.name}</option>;
