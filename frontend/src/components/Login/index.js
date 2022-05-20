@@ -22,6 +22,7 @@ export const Login = () => {
     axios.post("http://localhost:5000/login",{email:email,password:password}).then((result)=>{
     setMessage(result.data.sucess)
     localStorage.setItem("token",result.data.token)
+    Location.reload()
     navigate(-1)
   }).catch((err)=>{
     console.log(err);

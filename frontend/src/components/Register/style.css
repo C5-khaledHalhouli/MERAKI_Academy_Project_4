@@ -1,0 +1,18 @@
+.registerPage{
+    margin: 2%;
+}
+.registerInfo{
+    font-size: 21px;
+    font-weight: 500;
+}
+.registerInput{
+    font-size: 20px;
+}
+.buttonRegister{
+font-size: 20px;
+}
+.messageRegister{
+    font-size: 22px;
+    color: red;
+    font-weight: 600;
+}

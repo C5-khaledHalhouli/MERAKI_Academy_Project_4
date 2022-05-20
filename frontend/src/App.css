@@ -1,8 +1,8 @@
 .App {
   display: grid;
   grid-template-rows: 10% auto 5%;
-  border: 3px solid black;
-  height: 100vh;
+  
+  height: 110vh;
   width: 96vw;
 }
 
@@ -15,6 +15,7 @@
 }
 .mainPage {
   background-color: white;
+  margin-bottom: 4%;
 }
 .footer {
   color: blue;

@@ -1,3 +1,4 @@
+import "./style.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -37,9 +38,9 @@ const CreateFeedback = () => {
   };
 
   return (
-    <>
-      <p>Rate</p>
-      <select
+    <div id="feedbackAndRate">
+      <p id="ratePar">Rate</p>
+      <select id="rateSelect"
         onChange={(e) => {
           setRate(e.target.value);
         }}
@@ -50,15 +51,15 @@ const CreateFeedback = () => {
         <option>4</option>
         <option>5</option>
       </select>
-      <p>feedback</p>
-      <input
+      <p id="rateComment">Feedback</p>
+      <input id="rateCommentInput"
         placeholder="Feedback"
         onChange={(e) => {
           setComment(e.target.value);
         }}
       />
-      <button onClick={clickSend}>Send</button>
-    </>
+      <button id="sendButton" onClick={clickSend}>Send</button>
+    </div>
   );
 };
 export { CreateFeedback };

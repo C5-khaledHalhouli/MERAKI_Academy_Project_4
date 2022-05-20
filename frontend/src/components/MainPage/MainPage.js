@@ -26,9 +26,12 @@ useEffect(()=>{
 },[])
 // return each category and make it as link with path of categoryID
 return <div id="categories">{category&&category.map((element,index)=>{
+
     return <div className="category">
-        <img className="categoryImg" src={img}/>
-        <Link className="categoryName" key={index} to={`/category/${element._id}/services`} >{element.name}</Link></div>
+        <img className="categoryImg" src={element.img}/>
+        <Link className="categoryName" key={index} to={`/category/${element._id}/services`} >
+            
+            {element.name}</Link></div>
 })}</div>
 }
 

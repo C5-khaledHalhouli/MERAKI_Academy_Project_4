@@ -22,9 +22,9 @@ function App() {
   // check if we have token in localstorage if we have we wil save it value in token variable
   useEffect(() => {
     if (
-      localStorage.getItem("token") !== null &&
+      localStorage.getItem("token") !== null && localStorage.getItem("token") !== false&&
       jwtDecode(token).exp * 1000 >= Date.now()
-    ) {
+      ) {
       setIsloggedIn(true);
       localStorage.setItem("isLoggedIn", true);
     } else {
@@ -32,8 +32,8 @@ function App() {
       localStorage.setItem("isLoggedIn", false);
     }
   },);
-  return (
-    <div className="App">
+    return (
+      <div className="App">
       <div className="navbar">
         <NavBar isLoggedIn={isLoggedIn} setResult={setResult} />
       </div>

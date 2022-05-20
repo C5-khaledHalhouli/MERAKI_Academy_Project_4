@@ -1,6 +1,7 @@
+import "./style.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import UploadImg from "../UploadIMg";
 // create function Register
 
 const Register = () => {
@@ -78,10 +79,11 @@ const Register = () => {
       });
   };
   return (
-    <>
+    <div className="registerPage">
       <p className="registerInfo">First Name</p>
       <input
         placeholder="First Name"
+        className="registerInput"
         onChange={(e) => {
           setFirstName(e.target.value);
         }}
@@ -89,14 +91,43 @@ const Register = () => {
       />
       <p className="registerInfo">Last Name</p>
       <input
+        className="registerInput"
         placeholder="Last Name"
         onChange={(e) => {
           setLastName(e.target.value);
         }}
         type="text"
       />
+      <p className="registerInfo">Email</p>
+      <input
+        className="registerInput"
+        placeholder="Email"
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+        type="email"
+      />
+      <p className="registerInfo">Password</p>
+      <input
+        className="registerInput"
+        placeholder="Password"
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+        type="password"
+      />
+      <p className="registerInfo">Confirm Password</p>
+      <input
+        className="registerInput"
+        placeholder="Confirm Password"
+        onChange={(e) => {
+          setConfirmPassword(e.target.value);
+        }}
+        type="password"
+      />
       <p className="registerInfo">Birthday</p>
       <input
+        className="registerInput"
         placeholder="Birthday"
         onChange={(e) => {
           setBirthday(e.target.value);
@@ -105,6 +136,7 @@ const Register = () => {
       />
       <p className="registerInfo">Country</p>
       <input
+        className="registerInput"
         placeholder="Jordan"
         onChange={(e) => {
           setCountry(e.target.value);
@@ -120,6 +152,7 @@ const Register = () => {
       </datalist>
       <p className="registerInfo">City</p>
       <input
+        className="registerInput"
         placeholder="City"
         onChange={(e) => {
           setCity(e.target.value);
@@ -133,33 +166,12 @@ const Register = () => {
             return <option value={element.name}>{element.name}</option>;
           })}
       </datalist>
-      <p className="registerInfo">Email</p>
-      <input
-        placeholder="Email"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-        type="email"
-      />
-      <p className="registerInfo">Password</p>
-      <input
-        placeholder="Password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-        type="password"
-      />
-      <p className="registerInfo">Confirm Password</p>
-      <input
-        placeholder="Confirm Password"
-        onChange={(e) => {
-          setConfirmPassword(e.target.value);
-        }}
-        type="password"
-      />
-      <p>{message}</p>
-      <button onClick={clickRegister}>Register</button>
-    </>
+
+      <p className="messageRegister">{message}</p>
+      <button className="buttonRegister" onClick={clickRegister}>
+        Register
+      </button>
+    </div>
   );
 };
 
