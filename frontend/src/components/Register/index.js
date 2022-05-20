@@ -2,9 +2,11 @@ import "./style.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UploadImg from "../UploadIMg";
+import { useNavigate } from "react-router-dom";
 // create function Register
 
 const Register = () => {
+  const navigate= useNavigate()
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthday, setBirthday] = useState("");
@@ -70,6 +72,10 @@ const Register = () => {
       .then((result) => {
         console.log(result);
         setMessage("You have successfully registered");
+        setTimeout(()=>{
+          navigate("/login")
+
+        },2000)
       })
       .catch((err) => {
         if (err.response.data.err.includes("E11000")) {
@@ -80,6 +86,7 @@ const Register = () => {
   };
   return (
     <div className="registerPage">
+      <h1>Register</h1>
       <p className="registerInfo">First Name</p>
       <input
         placeholder="First Name"

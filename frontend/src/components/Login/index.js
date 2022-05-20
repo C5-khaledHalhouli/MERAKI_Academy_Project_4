@@ -22,8 +22,9 @@ export const Login = () => {
     axios.post("http://localhost:5000/login",{email:email,password:password}).then((result)=>{
     setMessage(result.data.sucess)
     localStorage.setItem("token",result.data.token)
+    localStorage.setItem("isLoggedIn",true)
     Location.reload()
-    navigate(-1)
+    navigate("/")
   }).catch((err)=>{
     console.log(err);
     setMessage(err.response.data)
