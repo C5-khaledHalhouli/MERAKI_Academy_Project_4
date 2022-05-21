@@ -1,7 +1,8 @@
 .createService{
-    margin: 3%;
+    padding: 3%;
     display: flex;
     flex-direction: column;
+    background-color: #f0f0f0;
 }
 .serviceInfo{
     font-size: 24px;
@@ -27,5 +28,8 @@ select{
     height: 30px;
     width: 160px;
     margin-top: 2%;
+    font-size: 20px;
+}
+.messagePar{
     font-size: 20px;
 }

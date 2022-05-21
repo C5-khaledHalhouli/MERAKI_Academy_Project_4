@@ -1,10 +1,11 @@
+import "./style.css"
 import React, { useState } from 'react'
 
 
 
-const UploadImg = () => {
+const UploadImg = ({img,setImg}) => {
 const [image, setImage ] = useState("");
-const [ url, setUrl ] = useState("");
+const [ url, setUrl ] = useState([]);
 const uploadImage = () => {
 const data = new FormData()
 data.append("file", image)
@@ -17,6 +18,12 @@ body: data
 .then(resp => resp.json())
 .then(data => {
     console.log(data.url);
+    console.log(img);
+    setImg([...img,data.url])
+    
+
+
+    console.log(img);
 setUrl(data.url)
 })
 .catch(err => console.log(err))
@@ -24,12 +31,14 @@ setUrl(data.url)
 return (
 <div>
 <div>
-<input type="file" onChange= {(e)=> setImage(e.target.files[0])}></input>
-<button onClick={uploadImage}>Upload</button>
+<input type="file" className='inputImg' onChange= {(e)=> setImage(e.target.files[0])}/>
+<button className='buttonImg' onClick={uploadImage}>Upload</button>
 </div>
-<div>
-<img src={url}/>
-</div>
+{img.map((element,index)=>{
+    return <img src={element} className="uploadedImg"/>
+})}
+
+
 </div>
 )
 }

@@ -10,8 +10,8 @@
     display: flex;
     justify-content:flex-end;
     padding: 4% 7%;
-    display:none
-    ;
+    
+    
 }
 .homeListElement{
     height: 100%;
@@ -25,11 +25,12 @@
 }
 .logoImg{
     height: 50%;
+    width: 100%;
 }
 .menuList{
     background-color: #f0aa91;
     color: white;
-    display: flex;
+    display: none;
     z-index: 10000
     ;
     flex-direction: column;

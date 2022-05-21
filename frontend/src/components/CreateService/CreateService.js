@@ -16,6 +16,9 @@ const CreateService = () => {
   const [country, setCountry] = useState("Jordan");
   const [city, setCity] = useState("");
   const [countries,setCountries]=useState("")
+  const [img,setImg]=useState([])
+const [message,setMessage]=useState("")
+  
   useEffect(() => {
     axios.get("http://localhost:5000/category").then((result) => {
       // change the value of category to its id in db
@@ -54,6 +57,7 @@ const CreateService = () => {
           cost: cost,
           country: country,
           city: city,
+          img:img
         },
         {
           headers: {
@@ -63,6 +67,7 @@ const CreateService = () => {
       )
       .then((result) => {
 console.log(result);
+setMessage("The service has been added")
         navigate(-1)
       })
       .catch((err) => {
@@ -71,6 +76,7 @@ console.log(result);
   };
   return (
     <div className="createService">
+      <h1>Add your service:-</h1>
       <p className="serviceInfo">Service</p>
       <input
         placeholder="Service" className="serviceInput"
@@ -127,7 +133,8 @@ console.log(result);
         
         }} className="serviceInput"
       />
-      <UploadImg/>
+      <UploadImg setImg={setImg} img={img}/>
+      <p className="messagePar">{message}</p>
       <button onClick={clickCreateService} className="createButton">Create Service</button>
     </div>
   );

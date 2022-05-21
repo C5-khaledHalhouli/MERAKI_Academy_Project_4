@@ -10,6 +10,7 @@ const Service = () => {
   const [service, setService] = useState("");
   const [feedback, setFeedback] = useState("");
   const [avgRate, setAvgRate] = useState("");
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/category/service/${serviceID}`)
