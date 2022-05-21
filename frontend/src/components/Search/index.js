@@ -1,4 +1,6 @@
 import "./style.css";
+
+import { FaSearch } from "react-icons/fa"
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -59,7 +61,7 @@ const Search = ({ setResult }) => {
       id="searchInput"/>
       <Link to="/search">
         <button on onClick={searchClick} id="searchButton">
-          search
+         <FaSearch/>
         </button>
       </Link>
     </div>

@@ -1,43 +1,56 @@
-.title{
-    padding: 0% 5%;
-    
+.title {
+  padding: 0% 5%;
 }
 
-.homeList{
-    height: auto;
-    width: auto;
-    gap: 10%;
-    display: flex;
-    justify-content:flex-end;
-    padding: 4% 7%;
-    
-    
+.homeList {
+  height: auto;
+  width: auto;
+  gap: 10%;
+  display: none;
+  justify-content: flex-end;
+  padding: 4% 7%;
 }
-.homeListElement{
-    height: 100%;
+.homeListElement {
+  height: 100%;
 
-    font-size: 20px;
-    font-weight: 600;
-    align-items: center;
-    color: #271c18;
-    text-decoration: none;
-
+  font-size: 20px;
+  font-weight: 600;
+  align-items: center;
+  color: #271c18;
+  text-decoration: none;
 }
-.logoImg{
+.logoImg {
+  height: 100px;
+  width: 400px;
+}
+.menuList {
+  background-color: #f0aa91;
+  color: white;
+  display: none;
+  z-index: 10000;
+  flex-direction: column;
+  padding: 4%;
+  height: 230%;
+  width: 80%;
+  position: relative;
+  right: 33%;
+  top: 48%;
+}
+.mainList {
+  height: 50px;
+  width: 50px;
+  justify-self: flex-end;
+  display: none;
+}
+@media all and (max-width: 600px) {
+  .logoImg {
     height: 70px;
-    width: 100%;
-}
-.menuList{
-    background-color: #f0aa91;
-    color: white;
-    display: none;
-    z-index: 10000
-    ;
-    flex-direction: column;
-    padding: 4%;
-    height: 230%;
-    width: 80%;
-    position: relative;
-    right: 33%;
-    top: 48%;
+    width: 150px;
+  }
+  .mainList {
+    height: 50px;
+    width: 50px;
+    justify-self: flex-end;
+   
+  }
 }

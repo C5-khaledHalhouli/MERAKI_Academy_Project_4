@@ -7,11 +7,26 @@
 }
 #searchInput{
     width: 70%;
-    height: 36%;
+    height: 85%;
     font-size: 18px;
 }
 #searchButton{
-    height: 26px;
+    height: 37px;
     font-size: 18px;
-    margin: 0% 7%;
+    border-left: white;
+background-color: white;
+
 }
+.search{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media all and (max-width:600px){
+    #searchButton{
+        height: 85%;
+        font-size: 18px;
+        border-left: white;
+    background-color: white;}
+  }

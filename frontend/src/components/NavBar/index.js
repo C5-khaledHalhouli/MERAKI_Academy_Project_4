@@ -1,4 +1,5 @@
 import "./style.css";
+
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Search } from "../Search";
@@ -12,6 +13,7 @@ const NavBar = ({ isLoggedIn, setResult }) => {
         <div className="search">
           <Search setResult={setResult} />
         </div>
+        <button className="mainList">Main List</button>
         <div className="homeList">
           <Link to="/" className="homeListElement">
             Home
@@ -44,6 +46,7 @@ const NavBar = ({ isLoggedIn, setResult }) => {
           </Link>
           <Logout />
         </div>
+        <button className="mainList">Main List</button>
         <div className="menuList">
           <Link to="/" className="homeListElement">
             Home

@@ -10,7 +10,7 @@
   display: grid;
   background-color: #ffc527;
   grid-template-columns: auto 20% 30%;
-  height: 70px;
+  height: 100px;
   width: 100%;
   overflow: hidden;
 }
@@ -21,5 +21,16 @@
 .footer {
   color: blue;
   background-color: #181818;
-  align-self:flex-end;
+  height: 50px;
+}
+@media all and (max-width:600px){
+  .navbar {
+    display: grid;
+    background-color: #ffc527;
+    grid-template-columns: auto 30% 15%;
+    height: 70px;
+    width: 100%;
+    overflow: hidden;
+
+  }
 }

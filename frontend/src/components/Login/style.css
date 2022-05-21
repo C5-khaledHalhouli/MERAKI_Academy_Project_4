@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 45vw;
   width: 100%;
   flex-direction: column;
 }
@@ -21,4 +21,14 @@
     margin: 6% 0% 0%;
     height: 13%;
     font-size: 18px;
+}
+@media all and (max-width:600px){
+    #login{
+        height: 135vw;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
