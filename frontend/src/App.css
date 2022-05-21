@@ -9,10 +9,13 @@
 .navbar {
   display: grid;
   background-color: #ffc527;
-  grid-template-columns: auto 20% 30%;
+  grid-template-columns: 50% 20% 30% 10%;
   height: 100px;
   width: 100%;
   overflow: hidden;
+  position: sticky;
+  top: 0px;
+  z-index: 11;
 }
 .mainPage {
   margin-top: 5%;
@@ -27,7 +30,7 @@
   .navbar {
     display: grid;
     background-color: #ffc527;
-    grid-template-columns: auto 30% 15%;
+    grid-template-columns: 55% 30% 15% 10%;
     height: 70px;
     width: 100%;
     overflow: hidden;

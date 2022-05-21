@@ -6,7 +6,7 @@
   height: auto;
   width: auto;
   gap: 10%;
-  display: none;
+  display: flex;
   justify-content: flex-end;
   padding: 4% 7%;
 }
@@ -24,17 +24,19 @@
   width: 400px;
 }
 .menuList {
-  background-color: #f0aa91;
-  color: white;
-  display: none;
-  z-index: 10000;
-  flex-direction: column;
-  padding: 4%;
-  height: 230%;
-  width: 80%;
-  position: relative;
-  right: 33%;
-  top: 48%;
+    padding: 10px;
+    width: 71px;
+    height: 250px;
+    position: absolute;
+    z-index: 12;
+    right: 6px;
+    background-color: #ffc527;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0px 20px 20px;
+    border: 2px solid;
+    top: 60px;
 }
 .mainList {
   height: 50px;
@@ -48,9 +50,16 @@
     width: 150px;
   }
   .mainList {
-    height: 50px;
-    width: 50px;
+    height: 31px;
+    width: 38px;
     justify-self: flex-end;
+    display: inline;
+    font-size: 20px;
+    align-self: center;
    
+  }
+  .homeList {
+    
+    display: none;
   }
 }

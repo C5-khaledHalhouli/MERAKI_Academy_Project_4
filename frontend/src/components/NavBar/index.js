@@ -1,10 +1,11 @@
 import "./style.css";
-
-import React, { useEffect } from "react";
+import { FaList } from "react-icons/fa";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Search } from "../Search";
 import logo from "./assist/image/logo.png";
 import { Logout } from "../Logout";
+
 const NavBar = ({ isLoggedIn, setResult }) => {
   if (!isLoggedIn) {
     return (
@@ -13,7 +14,9 @@ const NavBar = ({ isLoggedIn, setResult }) => {
         <div className="search">
           <Search setResult={setResult} />
         </div>
-        <button className="mainList">Main List</button>
+        <button className="mainList">
+          <FaList />
+        </button>
         <div className="homeList">
           <Link to="/" className="homeListElement">
             Home
@@ -46,19 +49,9 @@ const NavBar = ({ isLoggedIn, setResult }) => {
           </Link>
           <Logout />
         </div>
-        <button className="mainList">Main List</button>
-        <div className="menuList">
-          <Link to="/" className="homeListElement">
-            Home
-          </Link>
-          <Link to="/category/createService" className="homeListElement">
-            Create Service2
-          </Link>
-          <Link to={`/user/myservices`} className="homeListElement">
-            My services
-          </Link>
-          <Logout />
-        </div>
+        <button className="mainList">
+          <FaList />
+        </button>
       </>
     );
   }

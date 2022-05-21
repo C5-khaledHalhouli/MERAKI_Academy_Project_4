@@ -12,6 +12,7 @@ import { MyServices } from "./components/MyServices";
 import { Service } from "./components/Service";
 import { UpdateService } from "./components/UpdateService";
 import { SearchPage } from "./components/SearchPage";
+import {MenuList} from "./components/MenuList/index"
 // make variable of context
 export const tokenContext = createContext();
 function App() {
@@ -39,8 +40,9 @@ function App() {
       <div className="navbar">
         <NavBar isLoggedIn={isLoggedIn} setResult={setResult} />
       </div>
+      <MenuList isLoggedIn={isLoggedIn}/>
       <div className="mainPage">
-        <tokenContext.Provider value={setToken}>
+        <tokenContext.Provider value={{setToken,token}}>
           <Routes>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
