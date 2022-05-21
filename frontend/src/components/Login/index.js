@@ -23,7 +23,7 @@ export const Login = () => {
     setMessage(result.data.sucess)
     localStorage.setItem("token",result.data.token)
     localStorage.setItem("isLoggedIn",true)
-    Location.reload()
+    
     navigate("/")
   }).catch((err)=>{
     console.log(err);
