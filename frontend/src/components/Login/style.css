@@ -22,6 +22,11 @@
     height: 13%;
     font-size: 18px;
 }
+.loginDiv{
+    background: #f0f0f0;
+    padding: 3%;
+    border-radius: 10px;
+}
 @media all and (max-width:600px){
     #login{
         height: 135vw;

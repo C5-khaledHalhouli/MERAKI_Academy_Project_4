@@ -9,7 +9,7 @@ const CreateFeedback = () => {
   // take the params from url
   const { serviceID } = useParams();
   // write state for rate , comment and user
-  const [rate, setRate] = useState(1);
+  const [rate, setRate] = useState(5);
   const [comment, setComment] = useState("");
 
 

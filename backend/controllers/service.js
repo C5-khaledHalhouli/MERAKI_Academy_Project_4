@@ -12,10 +12,10 @@ const { populate } = require("../models/userSchema");
 const createNeWService = (req, res) => {
   // const userId = req.token.userId
 
-  const { title, category, description, cost, img, feedback, country, cities } =
+  const { title, category, description, cost, img, feedback, country, cities,phone } =
     req.body;
   const user = req.token._id;
-const avgRate="5/5"
+const avgRate="5"
   const newService = new serviceModel({
     title,
     category,
@@ -115,7 +115,7 @@ const allServices = (req, res) => {
 // get the data from the body
 const updateOfService = (req, res) => {
   const serviceID = req.params.serviceID;
-  const { title, category, description, cost, img, feedback, country, cities } =
+  const { title, category, description, cost, img, feedback, country, cities,avgRate,phone } =
     req.body;
   const user = req.token._id;
   serviceModel
@@ -130,7 +130,7 @@ const updateOfService = (req, res) => {
         img,
         feedback,
         country,
-        cities,
+        cities,avgRate,phone
       },
       { returnDocument: "after" }
     )

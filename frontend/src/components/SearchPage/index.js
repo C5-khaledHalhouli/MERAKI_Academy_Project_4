@@ -22,12 +22,12 @@ const SearchPage=(result)=>{
               <p className="serviceInfo2"><span>Service: </span>{element.title} </p>
               <p className="serviceInfo2"><span>User: </span>{element.user.firstName} </p>
               <p className="serviceInfo2"><span>Cities: </span>{element.cities.join(",")}</p>
-              <p className="serviceInfo2"><span>Rate: </span>
+              <p className="serviceInfo2"><span>Rate:{element.avgRate}/5 </span>
                  
               </p>
 
               </div>
-              <p className="serviceInfo2"><span>Cost: </span> {element.cost} </p>
+              <p className="serviceInfo2"><span>Price: </span> {element.cost} </p>
             </Link>
             </div>
             

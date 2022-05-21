@@ -20,7 +20,7 @@ function App() {
   //  write stat for token and isLoggedIn
   const [isLoggedIn, setIsloggedIn] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
-
+const [menuListStyle,setMenuListStyle]=useState("menuList")
   // check if we have token in localstorage if we have we wil save it value in token variable
   useEffect(() => {
     if (
@@ -37,15 +37,15 @@ function App() {
   });
   return (
     <div className="App">
+        <tokenContext.Provider value={{setToken,token,setIsloggedIn}}>
       <div className="navbar">
-        <NavBar isLoggedIn={isLoggedIn} setResult={setResult} />
+        <NavBar isLoggedIn={isLoggedIn} setResult={setResult} setMenuListStyle={setMenuListStyle} />
       </div>
-      <MenuList isLoggedIn={isLoggedIn}/>
+      <MenuList isLoggedIn={isLoggedIn} menuListStyle={menuListStyle} setMenuListStyle={setMenuListStyle}/>
       <div className="mainPage">
-        <tokenContext.Provider value={{setToken,token}}>
           <Routes>
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login setIsloggedIn={setIsloggedIn}/>} />
             <Route path="/" element={<MainPage />} />
             <Route
               path="/category/:categoryID/services"
@@ -61,11 +61,11 @@ function App() {
             />
             <Route path="/search" element={<SearchPage result={result} />} />
           </Routes>
-        </tokenContext.Provider>
       </div>
       <div className="footer">
-        <p>Footer</p>
+        <p className="footerPar">© 2018. ALL RIGHTS RESERVED</p>
       </div>
+        </tokenContext.Provider>
     </div>
   );
 }

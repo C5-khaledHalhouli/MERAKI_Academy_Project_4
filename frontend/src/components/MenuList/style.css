@@ -1,4 +1,9 @@
 .menuListElement{
+    margin-top: 10%;
+    height: 100%;
     font-size: 20px;
-    margin-top: 12%;
+    font-weight: 600;
+    align-items: center;
+    color: #271c18;
+    text-decoration: none;
 }

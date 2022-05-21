@@ -26,6 +26,12 @@
   background-color: #181818;
   height: 50px;
 }
+.footerPar{
+  color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 1%;
+}
 @media all and (max-width:600px){
   .navbar {
     display: grid;

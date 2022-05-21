@@ -79,7 +79,7 @@ const CreateService = () => {
       <p className="serviceInfo">Service</p>
       <input
         placeholder="Service"
-        className="serviceInput"
+        className="serviceInputCreate"
         onChange={(e) => {
           setService(e.target.value);
         }}
@@ -87,21 +87,21 @@ const CreateService = () => {
       <p className="serviceInfo">phone</p>
       <input
         placeholder="0799999999"
-        className="serviceInput"
+        className="serviceInputCreate"
         onChange={(e) => {
           setPhone(e.target.value);
         }}
       />
       <p className="serviceInfo">Description</p>
       <input
-        placeholder="Description"
+        placeholder="Description" type="text"
         id="description"
         onChange={(e) => {
           setDescription(e.target.value);
         }}
       />
       <p className="serviceInfo">Category</p>
-      <select
+      <select className="selectCreate"
         onChange={(e) => {
           setCategory(e.target.value);
         }}
@@ -117,7 +117,7 @@ const CreateService = () => {
 
       <input
         placeholder="20$ per m2"
-        className="serviceInput"
+        className="serviceInputCreate"
         onChange={(e) => {
           setCost(e.target.value);
         }}
@@ -125,7 +125,7 @@ const CreateService = () => {
       <p className="serviceInfo">Country</p>
       <input
         list="countries"
-        className="serviceInput"
+        className="serviceInputCreate"
         placeholder="Jordan"
         onChange={(e) => {
           setCountry(e.target.value);
@@ -143,7 +143,7 @@ const CreateService = () => {
         onChange={(e) => {
           setCity(e.target.value.split(","));
         }}
-        className="serviceInput"
+        className="serviceInputCreate"
       />
       <UploadImg setImg={setImg} img={img} />
       <p className="messagePar">{message}</p>

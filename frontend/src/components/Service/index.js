@@ -9,7 +9,7 @@ const Service = () => {
   const { serviceID } = useParams();
   const [service, setService] = useState("");
   const [feedback, setFeedback] = useState("");
-  const [avgRate, setAvgRate] = useState("");
+  const [avgRate, setAvgRate] = useState("25");
   const token = localStorage.getItem("token")
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Service = () => {
       (feedback &&
         feedback.reduce((acc, element) => {
           return acc + +element.rate;
-        }, 0)) / 5
+        }, 0)/feedback.length) 
     );
     axios
       .put(
@@ -82,7 +82,7 @@ const Service = () => {
             })}
         </p>
         <p>
-          <span>Cost:</span> {service && service.cost}
+          <span>Price:</span> {service && service.cost}
         </p>
         {service&& service.img.map((element)=>{return <img className="imageService" src={element}/>  })}
       </dev>

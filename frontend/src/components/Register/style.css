@@ -1,5 +1,6 @@
 .registerPage{
-    margin: 2%;
+    padding: 2%;
+    background: #f0f0f0;
 }
 .registerInfo{
     font-size: 21px;

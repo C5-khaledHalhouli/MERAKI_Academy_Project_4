@@ -9,19 +9,19 @@
     font-weight: 600;
 
 }
-.serviceInput{
-    width: 20%;
+.serviceInputCreate{
+    width: 40%;
     height: 22px;
     font-size: 18px;
 }
-select{
+.selectCreate{
     height: 30px;
-    width: 21%;
+    width: 40%;
     font-size: 20px;
 }
 #description{
     height: 70px;
-    width: 50%;
+    width: 70%;
     font-size: 20px;
 }
 .createButton{

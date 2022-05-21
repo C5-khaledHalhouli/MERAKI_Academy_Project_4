@@ -9,6 +9,7 @@
   display: flex;
   justify-content: flex-end;
   padding: 4% 7%;
+  align-self: center
 }
 .homeListElement {
   height: 100%;
@@ -24,6 +25,21 @@
   width: 400px;
 }
 .menuList {
+    padding: 10px;
+    width: 71px;
+    height: 250px;
+    position: absolute;
+    z-index: 12;
+    right: 6px;
+    background-color: #ffc527;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0px 20px 20px;
+    border: 2px solid;
+    top: 60px;
+}
+.showMenuList{
     padding: 10px;
     width: 71px;
     height: 250px;

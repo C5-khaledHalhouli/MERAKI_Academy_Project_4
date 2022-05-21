@@ -3,7 +3,7 @@ import React,{useState,useContext} from 'react'
 import axios from 'axios'
 import {tokenContext} from '../../App'
 import { useNavigate } from 'react-router-dom'
-export const Login = () => {
+export const Login = ({setIsloggedIn}) => {
   
   // create navigate 
   const navigate=useNavigate()
@@ -23,6 +23,8 @@ export const Login = () => {
     setMessage(result.data.sucess)
     localStorage.setItem("token",result.data.token)
     localStorage.setItem("isLoggedIn",true)
+    setIsloggedIn(true)
+    setToken(result.data.token)
     
     navigate("/")
   }).catch((err)=>{
@@ -34,11 +36,10 @@ export const Login = () => {
 
   return (
     <div id="login">
-      <div>
+      <div className="loginDiv">
 
       <p className="loginPar">Email</p>
-      <input onChange={(e)=>{
-        console.log(e.target.value);
+      <input onChange={(e)=>{;
         setEmail(e.target.value.toLowerCase())
       }} placeholder='Email' type="email"  className="loginInput"/>
       <p className="loginPar">Password</p>
