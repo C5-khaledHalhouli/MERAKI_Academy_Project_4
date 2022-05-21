@@ -15,7 +15,7 @@ const createNeWService = (req, res) => {
   const { title, category, description, cost, img, feedback, country, cities } =
     req.body;
   const user = req.token._id;
-
+const avgRate="5/5"
   const newService = new serviceModel({
     title,
     category,
@@ -26,6 +26,8 @@ const createNeWService = (req, res) => {
     feedback,
     country,
     cities,
+    phone,
+    avgRate,
   });
 
   newService
@@ -85,7 +87,7 @@ const createNeWService = (req, res) => {
 const getAllServices = (req, res) => {
   const categoryID = req.params.categoryID;
   serviceModel
-    .find({category:categoryID})
+    .find({ category: categoryID })
     .populate("user", "firstName -_id")
     .then((result) => {
       res.status(200).json(result);
@@ -186,6 +188,7 @@ const serviceByUserID = (req, res) => {
     .catch((err) => {
       res.status(500).json({ success: false, err: "11111111" });
     });
+
 };
 module.exports = {
   createNeWService,

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import UploadImg from "../UploadIMg";
 // write function to createservice
 const CreateService = () => {
-  const navigate= useNavigate()
+  const navigate = useNavigate();
   // write state for each category
   const [category, setCategory] = useState("LandScape");
   const [service, setService] = useState("");
@@ -15,16 +15,15 @@ const CreateService = () => {
   const [user, setUser] = useState("");
   const [country, setCountry] = useState("Jordan");
   const [city, setCity] = useState("");
-  const [countries,setCountries]=useState("")
-  const [img,setImg]=useState([])
-const [message,setMessage]=useState("")
-  
+  const [countries, setCountries] = useState("");
+  const [img, setImg] = useState([]);
+  const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
   useEffect(() => {
     axios.get("http://localhost:5000/category").then((result) => {
       // change the value of category to its id in db
       result.data.data.forEach((element) => {
         if (element.name.toLowerCase() === category.toLowerCase()) {
-          console.log(element._id);
           setCategory(element._id);
         }
       });
@@ -44,7 +43,6 @@ const [message,setMessage]=useState("")
   const clickCreateService = () => {
     const token = localStorage.getItem("token");
     setUser(jwtDecode(token)._id);
-
     // send the req to backend with data and token
     axios
       .post(
@@ -56,8 +54,9 @@ const [message,setMessage]=useState("")
           user: user,
           cost: cost,
           country: country,
-          city: city,
-          img:img
+          cities: city,
+          img: img,
+          phone: phone,
         },
         {
           headers: {
@@ -66,9 +65,9 @@ const [message,setMessage]=useState("")
         }
       )
       .then((result) => {
-console.log(result);
-setMessage("The service has been added")
-        navigate(-1)
+        console.log(result);
+        setMessage("The service has been added");
+        navigate(-1);
       })
       .catch((err) => {
         console.log("err", err);
@@ -79,20 +78,30 @@ setMessage("The service has been added")
       <h1>Add your service:-</h1>
       <p className="serviceInfo">Service</p>
       <input
-        placeholder="Service" className="serviceInput"
+        placeholder="Service"
+        className="serviceInput"
         onChange={(e) => {
           setService(e.target.value);
         }}
       />
+      <p className="serviceInfo">phone</p>
+      <input
+        placeholder="0799999999"
+        className="serviceInput"
+        onChange={(e) => {
+          setPhone(e.target.value);
+        }}
+      />
       <p className="serviceInfo">Description</p>
       <input
-        placeholder="Description" id="description"
+        placeholder="Description"
+        id="description"
         onChange={(e) => {
           setDescription(e.target.value);
         }}
       />
       <p className="serviceInfo">Category</p>
-      <select 
+      <select
         onChange={(e) => {
           setCategory(e.target.value);
         }}
@@ -107,35 +116,40 @@ setMessage("The service has been added")
       <p className="serviceInfo">Cost</p>
 
       <input
-        placeholder="20$ per m2" className="serviceInput"
+        placeholder="20$ per m2"
+        className="serviceInput"
         onChange={(e) => {
           setCost(e.target.value);
         }}
       />
       <p className="serviceInfo">Country</p>
-      <input list="countries" className="serviceInput"
+      <input
+        list="countries"
+        className="serviceInput"
         placeholder="Jordan"
         onChange={(e) => {
           setCountry(e.target.value);
         }}
       />
-        <datalist id="countries">
+      <datalist id="countries">
         {countries &&
           countries.map((element) => {
             return <option value={element.name}>{element.name}</option>;
           })}
       </datalist>
-      <p className="serviceInfo">City</p>
+      <p className="serviceInfo">Cities</p>
       <input
         placeholder="amman,irbed"
         onChange={(e) => {
           setCity(e.target.value.split(","));
-        
-        }} className="serviceInput"
+        }}
+        className="serviceInput"
       />
-      <UploadImg setImg={setImg} img={img}/>
+      <UploadImg setImg={setImg} img={img} />
       <p className="messagePar">{message}</p>
-      <button onClick={clickCreateService} className="createButton">Create Service</button>
+      <button onClick={clickCreateService} className="createButton">
+        Create Service
+      </button>
     </div>
   );
 };

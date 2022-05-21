@@ -1,0 +1,15 @@
+.searchServices{
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 2%;
+}
+.searchPar{
+    font-size: 25px;
+}
+.searchTitle{
+    font-size: 30px;
+    font-weight: 600;
+}
+.searchPage{
+    margin: 2%;
+}

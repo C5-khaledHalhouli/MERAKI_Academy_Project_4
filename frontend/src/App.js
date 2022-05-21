@@ -19,21 +19,23 @@ function App() {
   //  write stat for token and isLoggedIn
   const [isLoggedIn, setIsloggedIn] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
+
   // check if we have token in localstorage if we have we wil save it value in token variable
   useEffect(() => {
     if (
-      localStorage.getItem("token") !== null && localStorage.getItem("token") !== false&&
+      localStorage.getItem("token") !== null &&
+      localStorage.getItem("token") !== false &&
       jwtDecode(token).exp * 1000 >= Date.now()
-      ) {
+    ) {
       setIsloggedIn(true);
       localStorage.setItem("isLoggedIn", true);
     } else {
       setIsloggedIn(false);
       localStorage.setItem("isLoggedIn", false);
     }
-  },);
-    return (
-      <div className="App">
+  });
+  return (
+    <div className="App">
       <div className="navbar">
         <NavBar isLoggedIn={isLoggedIn} setResult={setResult} />
       </div>

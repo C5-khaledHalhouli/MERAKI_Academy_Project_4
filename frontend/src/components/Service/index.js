@@ -10,6 +10,7 @@ const Service = () => {
   const [service, setService] = useState("");
   const [feedback, setFeedback] = useState("");
   const [avgRate, setAvgRate] = useState("");
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     axios
@@ -38,6 +39,23 @@ const Service = () => {
           return acc + +element.rate;
         }, 0)) / 5
     );
+    axios
+      .put(
+        `http://localhost:5000/category/service/${serviceID}`,
+        {
+          avgRate:avgRate,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
   }, [feedback]);
   return (
     <div className="servicesDesAndFeedbacks">
@@ -66,6 +84,7 @@ const Service = () => {
         <p>
           <span>Cost:</span> {service && service.cost}
         </p>
+        {service&& service.img.map((element)=>{return <img className="imageService" src={element}/>  })}
       </dev>
       <div className="feedbacks">
         <h2 id="feedbackTitle">Feedbacks</h2>

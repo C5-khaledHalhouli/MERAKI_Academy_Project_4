@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 
 // write function services to display all services in the category
 
-const Services = () => {
+const Services = ({avgRate}) => {
   // get the params form url
   const { categoryID } = useParams();
 //   write state of services
@@ -32,15 +32,17 @@ const Services = () => {
             <>
             <Link to= {`/category/service/${element._id}`} className="serviceLink" >
               <div>
-              <p className="serviceInfo">Service:{element.title} </p>
-              <p className="serviceInfo">User:{element.user.firstName} </p>
-              <p className="serviceInfo">Cities: {element.cities.join(",")}</p>
-              <p className="serviceInfo">
-                Rate: 
+                <img src={element.img[0]} className="serviceImg"/>
+              </div>
+              <div>
+              <p className="serviceInfo2"><span>Service: </span>{element.title} </p>
+              <p className="serviceInfo2"><span>User: </span>{element.user.firstName} </p>
+              <p className="serviceInfo2"><span>Cities: </span>{element.cities.join(",")}</p>
+              <p className="serviceInfo2"><span>Rate:{element.avgRate} </span> 
               </p>
 
               </div>
-              <p className="serviceInfo">Cost: {element.cost} </p>
+              <p className="serviceInfo2"><span>Cost: </span> {element.cost} </p>
             </Link>
             </>
           );

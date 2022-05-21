@@ -13,7 +13,9 @@ const serviceSchema = new mongoose.Schema({
   feedback: { type: mongoose.Schema.Types.ObjectId, ref: "Feedback" },
   country: { type: String, required: true },
   cities: [{ type: String, required: true }],
-  img:[{type: String}]
+  img:[{type: String}],
+  phone:{type:String,required:true},
+  avgRate:{type:String}
 });
 
 // make model and export the schema
