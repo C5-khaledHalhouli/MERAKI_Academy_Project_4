@@ -53,18 +53,33 @@ Now app ready to use
 
 ## 🎈 Usage <a name="usage"></a>
 
-*For customer:-
+* For customer:-
 1- you don't have to sign in.
 2- you can see all category.
+<img src="https://res.cloudinary.com/halhouli/image/upload/v1653167284/sayg1hsqbywhbg42rome.png">
 3- you can see all services inside every category.
+<img src="https://res.cloudinary.com/halhouli/image/upload/v1653219275/hu6f8rvssjwtetb5ya4y.png">
 4- you can see all infomation of service by click on it.
+<img src="https://res.cloudinary.com/halhouli/image/upload/v1653219287/laprhunoclaxotqralkz.png">
 5- you can make search for services you want.
 6- if you wanna leave feedback you need to register and login.
+<img src="https://res.cloudinary.com/halhouli/image/upload/v1653219298/zmcrnwoi8jogekrjvhyc.png">
 * For worker(service provider):-
 1- you need to register and login.
+<img src="https://res.cloudinary.com/halhouli/image/upload/v1653219636/huuxpbtnmaxpi1bo4n7h.png">
 2- you can create your service.
+<img src="https://res.cloudinary.com/halhouli/image/upload/v1653219671/flkgarcb92ctcujdhsjj.png">
 3- you can see all services you provided.
+<img src="https://res.cloudinary.com/halhouli/image/upload/v1653219646/htu2sqsayo3nhrce04bn.png">
 4- you can update on your service and delete it
+
+
+##    User Story
+you can see it at trello (https://trello.com/b/dbWJUmCe/simple-project-board)
+
+## Data flow
+
+<img src="https://res.cloudinary.com/halhouli/image/upload/v1653219660/xnhk9twnmppdtekh6mir.jpg">
 
 
 ## ⛏️ Built Using <a name = "built_using"></a>

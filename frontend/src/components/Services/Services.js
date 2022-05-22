@@ -25,11 +25,10 @@ const Services = ({avgRate}) => {
 // display the services
   return (
     <div className="services">
-      <div className="service">
       {services &&
         services.map((element, index) => {
           return (
-            <>
+            <div className="service">
             <Link to= {`/category/service/${element._id}`} className="serviceLink" >
               <div>
                 <img src={element.img[0]} className="serviceImg"/>
@@ -44,10 +43,10 @@ const Services = ({avgRate}) => {
               </div>
               <p className="serviceInfo2"><span>Price: </span> {element.cost} </p>
             </Link>
-            </>
+            </div>
           );
         })}
-        </div>
+        
     </div>
   );
 };

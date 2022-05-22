@@ -3,7 +3,7 @@ import "./style.css";
 import React,{useEffect,useState} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import img from "./assist/image/Other.jpg"
+
 
 // write MainPage compenent
 
